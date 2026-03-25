@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Our Story · Sonitori Phnom Penh | From Humble Beginnings to Beloved Resort</title>
-    <!-- Font Awesome (for icons) -->
+    
+    <!-- Primary Meta Tags -->
+    <title>Our Story | Sonitori Resort Phnom Penh | From Siem Reap to Phnom Penh</title>
+    <meta name="title" content="Our Story | Sonitori Resort Phnom Penh">
+    <meta name="description" content="Discover the inspiring story of Sonitori Resort, from a small 9-room hotel in Siem Reap in 2006 to a beloved LGBTQ+ friendly boutique resort in Phnom Penh.">
+    <meta name="keywords" content="Sonitori story, about Sonitori, hotel history, Siem Reap, Phnom Penh resort, LGBTQ+ friendly hotel, boutique hotel Cambodia">
+    <meta name="author" content="Sonitori Resort">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sonitori.com/about-us/our-story/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sonitori.com/about-us/our-story/">
+    <meta property="og:title" content="Our Story | Sonitori Resort Phnom Penh">
+    <meta property="og:description" content="Discover the inspiring story of Sonitori Resort, from a small 9-room hotel in Siem Reap to a beloved LGBTQ+ friendly boutique resort.">
+    <meta property="og:image" content="https://sonitori.com/images/our-story-og.jpg">
+    <meta property="og:site_name" content="Sonitori Resort">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://sonitori.com/about-us/our-story/">
+    <meta name="twitter:title" content="Our Story | Sonitori Resort Phnom Penh">
+    <meta name="twitter:description" content="Discover the inspiring story of Sonitori Resort.">
+    <meta name="twitter:image" content="https://sonitori.com/images/our-story-twitter.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../images/top-logo.png">
+    <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../bookingsPopup/booking.css">
+    
     <style>
         * {
             margin: 0;
@@ -22,12 +56,91 @@
             font-size: 1rem;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            position: relative;
         }
 
         body.no-scroll {
             overflow: hidden;
             position: fixed;
             width: 100%;
+        }
+
+        /* ===== FULL SCREEN LOADER ===== */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 243, 240, 0.98);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .page-loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-container-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .loader-logo {
+            width: 130px;
+            height: auto;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        .loader-spinner-horizontal {
+            width: 28px;
+            height: 28px;
+            border: 3px solid rgba(9,118,132,0.2);
+            border-top: 3px solid #097684;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text-horizontal {
+            color: #097684;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide content initially */
+        .main-content {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .main-content.visible {
+            visibility: visible;
+            opacity: 1;
         }
 
         /* ===== NAVIGATION ===== */
@@ -41,6 +154,7 @@
             box-shadow: 0 4px 18px rgba(0,0,0,0.03);
             padding: 0.7rem 5%;
             border-bottom: 1px solid #e2ddd6;
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -55,6 +169,7 @@
             height: 50px;
             width: auto;
             filter: brightness(0.9);
+            transition: 0.2s;
         }
 
         .nav-links {
@@ -71,16 +186,57 @@
             color: #3b3a38;
             letter-spacing: 0.3px;
             transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: #097684; }
-        .nav-links a.active { 
-            font-weight: 500; 
-            color: #097684;
-            border-bottom: 1px solid #097684;
-            margin-bottom: -1px;
+            position: relative;
+            padding: 0.5rem 0;
         }
         
+        /* Navigation hover underline animation */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #097684;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover { 
+            color: #097684; 
+        }
+        
+        /* Active navigation - Small dot on the left for regular links */
+        .nav-links > a.active { 
+            font-weight: 500; 
+            color: #097684;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .nav-links > a.active::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #097684;
+            font-size: 0.7rem;
+        }
+        
+        .nav-links > a.active::after {
+            display: none;
+        }
+        
+        /* Remove underline from dropdown trigger */
+        .nav-links .dropdown-trigger::after {
+            background: rgba(0, 0, 0, 0) !important;
+        }
+
         .desktop-book-btn {
             background: transparent;
             border: 1px solid #097684;
@@ -89,7 +245,7 @@
             border-radius: 40px;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.3s ease;
             font-size: 0.95rem;
         }
 
@@ -97,6 +253,8 @@
             background: #097684;
             border-color: #097684;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(9,118,132,0.3);
         }
 
         .mobile-menu-icon {
@@ -328,6 +486,12 @@
             align-items: center;
             gap: 8px;
             border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-fixed-book:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(9,118,132,0.6);
         }
 
         @media (min-width: 901px) { .mobile-fixed-book { display: none; } }
@@ -376,6 +540,7 @@
             color: #3b3a38;
             font-size: 0.95rem;
             white-space: nowrap;
+            transition: all 0.2s ease;
         }
 
         .dropdown-menu a:hover {
@@ -437,7 +602,7 @@
         }
         
         .story-row:hover {
-            transform: scale(1.01) translateY(-4px);
+            transform: translateY(-4px);
             box-shadow: 0 15px 30px rgba(9,118,132,0.05);
         }
 
@@ -485,6 +650,18 @@
 
         .story-row.reverse { flex-direction: row-reverse; }
 
+        /* Scroll animation */
+        .story-row, .section-heading, .hero-slideshow {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .story-row.visible, .section-heading.visible, .hero-slideshow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ===== MOBILE BOTTOM SHEET ===== */
         @media (max-width: 900px) {
             .story-row {
@@ -494,6 +671,7 @@
                 overflow: hidden;
                 border: 1px solid #e2ddd6;
                 background: #fcfaf8;
+                gap: 1rem;
             }
             
             .story-row:hover {
@@ -614,6 +792,11 @@
             font-weight: 600;
             cursor: pointer;
             margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .sheet-close:hover {
+            color: #065a66;
         }
         
         .sheet-overlay {
@@ -643,7 +826,7 @@
         .back-to-top {
             display: flex;
             justify-content: center;
-            margin: 3rem 0 1rem;
+            margin: 3rem 0 -3.5rem;
         }
         
         .back-to-top a {
@@ -663,6 +846,7 @@
         .back-to-top a:hover {
             background: #065a66;
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(9,118,132,0.4);
         }
         
         .back-to-top a i {
@@ -676,89 +860,12 @@
             60% { transform: translateY(-4px); }
         }
 
-        /* ===== FOOTER ===== */
-        .footer {
-            background: #1f2a2e;
-            color: #ddd;
-            padding: 3rem 2rem 1rem;
-            margin-top: 2rem;
-        }
-        
-        .footer-content {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-        
-        .footer-col { flex: 1 1 200px; }
-        .footer-logo img { max-width: 200px; height: auto; margin-bottom: 1rem; }
-        .footer h4 { color: #fff; font-weight: 400; margin-bottom: 1rem; letter-spacing: 1px; }
-        .footer a { color: #ccc; text-decoration: none; display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
-        .footer a:hover { color: #097684; }
-        
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .social-icons a {
-            background: rgba(255,255,255,0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-        
-        .social-icons a:hover { background: #097684; }
-        
-        .footer-bottom {
-            max-width: 1300px;
-            margin: 2rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid #3a4549;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-        
-        .payment-icons {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .payment-icons img { height: 28px; }
-
-        /* scroll animations */
-        .story-row, .section-heading {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .story-row.visible, .section-heading.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         @media (max-width: 600px) {
             .hero-slideshow { height: 200px; }
             .story-image-col { min-height: 180px; }
             .story-title { font-size: 1.3rem; }
-            .footer-bottom { flex-direction: column; text-align: center; gap: 1rem; }
         }
 
-        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
@@ -774,9 +881,9 @@
                 <a href="../../event/index.html">Events</a>
                 <a href="../../gallery/index.html">Gallery</a>
                 <div class="dropdown">
-                    <a href="" class="dropdown-trigger active">About Us <span class="dropdown-arrow"><i class="fa-solid fa-angle-down"></i></span></a>
+                    <a href="#" class="dropdown-trigger active">About Us <span class="dropdown-arrow"><i class="fa-solid fa-angle-down"></i></span></a>
                     <div class="dropdown-menu">
-                        <a href="" class="active">Our Story</a>
+                        <a href="#" class="active">Our Story</a>
                         <a href="../community/index.html">Community</a>
                         <a href="../reviews/index.html">Review</a>
                         <a href="../press-library/index.html">Press Library</a>
@@ -806,7 +913,7 @@
                 </button>
                 <div class="dropdown-menu-mobile show" id="aboutMobileMenu">
                     <div>
-                        <a href="" class="active"><i class="fa-regular fa-compass"></i> Our Story</a>
+                        <a href="#" class="active"><i class="fa-regular fa-compass"></i> Our Story</a>
                         <a href="../community/index.html"><i class="fa-regular fa-handshake"></i> Community</a>
                         <a href="../reviews/index.html"><i class="fa-regular fa-star"></i> Review</a>
                         <a href="../press-library/index.html"><i class="fa-regular fa-newspaper"></i> Press Library</a>
@@ -817,11 +924,11 @@
             <div class="sidebar-social">
                 <h4>FOLLOW US</h4>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                <a href="https://www.facebook.com/RambutanResort" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/rambutanphnompenh/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCrRnbks0gWe8GTaYuu7Ec4Q" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.google.com/travel/search?q=rambutan%20phnom%20penh&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72560029%2C72573224%2C72616120%2C72619927%2C72628719%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72808078%2C72825294%2C72827241%2C72832976%2C72852292%2C72880929%2C72882230%2C72885032%2C72894324%2C72895620%2C72903276&hl=en-KH&gl=kh&cs=1&ssta=1&ts=CAEaOAoYEhYKCC9tLzBkbHdqOgpQaG5vbSBQZW5oEhwSFAoHCOkPEAMYHxIHCOkPEAQYARgBMgQIABAAKgcKBToDS0hS&qs=CAEyJkNoZ0kwTV9BcUx5em1iMEZHZ3d2Wnk4eE1qUnpjWGxqTVhjUUFROARCCRFPysEsWX26sUIJESvnhVcJ7BBRSABaQTI_qgE8EAEyHxABIhu5kQRKGJHzIYCAsFbNkOc2s_YQTWeaT6mp4JcyFxACIhNyYW1idXRhbiBwaG5vbSBwZW5o&ap=KigKEgkZbQJs5wQlQBEestwtROZZQBISCUgKqEGswCxAER6y3C2ES1pAMABoAboBB3Jldmlld3M&ictx=111&ved=0CAAQ5JsGahcKEwjIo7CP0LqTAxUAAAAAHQAAAAAQCA" target="_blank"><i class="fab fa-google"></i></a>
+                <a href="https://www.tripadvisor.com/Hotel_Review-g293940-d4039341-Reviews-Rambutan_Resort_Phnom_Penh-Phnom_Penh.html" target="_blank"><img src="../../images/tripadvisor-certificate.webp" alt="Tripadvisor" width="25px"></a>
                 </div>
             </div>
         </div>
@@ -844,6 +951,15 @@
         </div>
     </div>
 
+    <!-- Full Screen Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-container-vertical">
+            <img src="../../images/logo.png" alt="Sonitori Resort" class="loader-logo">
+            <div class="loader-spinner-horizontal"></div>
+            <div class="loader-text-horizontal">Loading Our Story...</div>
+        </div>
+    </div>
+
     <!-- Mobile bottom sheet overlay -->
     <div class="sheet-overlay" id="sheetOverlay"></div>
     
@@ -854,102 +970,110 @@
         <button class="sheet-close" id="sheetCloseBtn">Close</button>
     </div>
 
-    <main class="story-page">
-        <!-- hero slideshow with local images -->
-        <div class="hero-slideshow" id="heroSlideshow"></div>
-        <div class="spacer"></div>
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <main class="story-page">
+            <!-- hero slideshow with local images -->
+            <div class="hero-slideshow" id="heroSlideshow"></div>
+            <div class="spacer"></div>
 
-        <div class="section-heading" id="mainHeading">Our Story</div>
+            <div class="section-heading" id="mainHeading">Our Story</div>
 
-        <!-- Story Rows with local images -->
-        <div class="story-row" id="row1" data-title="The Beginning: Siem Reap 2006" data-description="We opened in Siem Reap in 2006. At the time, there were almost no hotels, but it was beautiful, undiscovered — a blank slate. Our tiny nine-room hotel was down a sandy road next to a pond where a thousand frogs sang every night. Buffalos roamed around, we routinely found snakes, and it felt remote. We were the first gay-friendly boutique hotel in the city and we wanted it to be a safe place for staff to work, whether they were LGBTQ or anything else; we were open to all. Our only criteria when hiring was openness and friendliness.">
-            <div class="story-image-col" style="background-image: url('../../images/dsc02703.webp');"></div>
-            <div class="story-text-col">
-                <h2 class="story-title">The Beginning: Siem Reap 2006</h2>
-                <div class="story-description">
-                    <p>We opened in Siem Reap in 2006. At the time, there were almost no hotels, but it was beautiful, undiscovered — a blank slate. Our tiny nine-room hotel was down a sandy road next to a pond where a thousand frogs sang every night. Buffalos roamed around, we routinely found snakes, and it felt remote. We were the first gay-friendly boutique hotel in the city and we wanted it to be a safe place for staff to work, whether they were LGBTQ or anything else; we were open to all. Our only criteria when hiring was openness and friendliness.</p>
+            <!-- Story Rows with local images -->
+            <div class="story-row" id="row1" data-title="The Beginning: Siem Reap 2006" data-description="We opened in Siem Reap in 2006. At the time, there were almost no hotels, but it was beautiful, undiscovered — a blank slate. Our tiny nine-room hotel was down a sandy road next to a pond where a thousand frogs sang every night. Buffalos roamed around, we routinely found snakes, and it felt remote. We were the first gay-friendly boutique hotel in the city and we wanted it to be a safe place for staff to work, whether they were LGBTQ or anything else; we were open to all. Our only criteria when hiring was openness and friendliness.">
+                <div class="story-image-col" style="background-image: url('../../images/dsc02703.webp');"></div>
+                <div class="story-text-col">
+                    <h2 class="story-title">The Beginning: Siem Reap 2006</h2>
+                    <div class="story-description">
+                        <p>We opened in Siem Reap in 2006. At the time, there were almost no hotels, but it was beautiful, undiscovered — a blank slate. Our tiny nine-room hotel was down a sandy road next to a pond where a thousand frogs sang every night. Buffalos roamed around, we routinely found snakes, and it felt remote. We were the first gay-friendly boutique hotel in the city and we wanted it to be a safe place for staff to work, whether they were LGBTQ or anything else; we were open to all. Our only criteria when hiring was openness and friendliness.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="story-row reverse" id="row2" data-title="Training & Growth" data-description="Back then, Siem Reap was one of the poorest regions in the country and people were eager to work. Many had farming backgrounds, they had worked in their family's rice fields, but never anywhere else. This was the first generation after the war; they were all around 19 or 20, they hadn't received any formal education or had access to real infrastructure. Hotel work was completely new and we trained everyone in-house extensively. Our staff were fantastic, they wanted to learn and make their lives better.">
-            <div class="story-image-col" style="background-image: url('../../images/img9555.webp');"></div>
-            <div class="story-text-col">
-                <h2 class="story-title">Training & Growth</h2>
-                <div class="story-description">
-                    <p>Back then, Siem Reap was one of the poorest regions in the country and people were eager to work. Many had farming backgrounds, they had worked in their family's rice fields, but never anywhere else. This was the first generation after the war; they were all around 19 or 20, they hadn't received any formal education or had access to real infrastructure. Hotel work was completely new and we trained everyone in-house extensively. Our staff were fantastic, they wanted to learn and make their lives better.</p>
+            <div class="story-row reverse" id="row2" data-title="Training & Growth" data-description="Back then, Siem Reap was one of the poorest regions in the country and people were eager to work. Many had farming backgrounds, they had worked in their family's rice fields, but never anywhere else. This was the first generation after the war; they were all around 19 or 20, they hadn't received any formal education or had access to real infrastructure. Hotel work was completely new and we trained everyone in-house extensively. Our staff were fantastic, they wanted to learn and make their lives better.">
+                <div class="story-image-col" style="background-image: url('../../images/img9555.webp');"></div>
+                <div class="story-text-col">
+                    <h2 class="story-title">Training & Growth</h2>
+                    <div class="story-description">
+                        <p>Back then, Siem Reap was one of the poorest regions in the country and people were eager to work. Many had farming backgrounds, they had worked in their family's rice fields, but never anywhere else. This was the first generation after the war; they were all around 19 or 20, they hadn't received any formal education or had access to real infrastructure. Hotel work was completely new and we trained everyone in-house extensively. Our staff were fantastic, they wanted to learn and make their lives better.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="story-row" id="row3" data-title="A Unique Concept" data-description="The hotel was packed from day one, we had no website, only a phone number and email address. Our guests found us mostly by word-of-mouth. There were big five-star hotels and very basic guest houses, but nothing in between, and we filled that gap. The hotel was designed to feel like a Khmer village, but with all modern amenities. There was nothing like us in the city.">
-            <div class="story-image-col" style="background-image: url('../../images/IMG_4929.webp');"></div>
-            <div class="story-text-col">
-                <h2 class="story-title">A Unique Concept</h2>
-                <div class="story-description">
-                    <p>The hotel was packed from day one, we had no website, only a phone number and email address. Our guests found us mostly by word-of-mouth. There were big five-star hotels and very basic guest houses, but nothing in between, and we filled that gap. The hotel was designed to feel like a Khmer village, but with all modern amenities. There was nothing like us in the city.</p>
+            <div class="story-row" id="row3" data-title="A Unique Concept" data-description="The hotel was packed from day one, we had no website, only a phone number and email address. Our guests found us mostly by word-of-mouth. There were big five-star hotels and very basic guest houses, but nothing in between, and we filled that gap. The hotel was designed to feel like a Khmer village, but with all modern amenities. There was nothing like us in the city.">
+                <div class="story-image-col" style="background-image: url('../../images/IMG_4929.webp');"></div>
+                <div class="story-text-col">
+                    <h2 class="story-title">A Unique Concept</h2>
+                    <div class="story-description">
+                        <p>The hotel was packed from day one, we had no website, only a phone number and email address. Our guests found us mostly by word-of-mouth. There were big five-star hotels and very basic guest houses, but nothing in between, and we filled that gap. The hotel was designed to feel like a Khmer village, but with all modern amenities. There was nothing like us in the city.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="story-row reverse" id="row4" data-title="Expansion & Legacy" data-description="Three years later, we added a resort with 16 rooms, and then expanded into Phnom Penh in 2013 with a 19-room resort. Most recently, in 2016, we opened the Urban Residences. Our business model has remained the same, and several of our early staff are still with us.">
-            <div class="story-image-col" style="background-image: url('../../images/screenshot-2018-12-23-at-14-43-08.webp');"></div>
-            <div class="story-text-col">
-                <h2 class="story-title">Expansion & Legacy</h2>
-                <div class="story-description">
-                    <p>Three years later, we added a resort with 16 rooms, and then expanded into Phnom Penh in 2013 with a 19-room resort. Most recently, in 2016, we opened the Urban Residences. Our business model has remained the same, and several of our early staff are still with us.</p>
+            <div class="story-row reverse" id="row4" data-title="Expansion & Legacy" data-description="Three years later, we added a resort with 16 rooms, and then expanded into Phnom Penh in 2013 with a 19-room resort. Most recently, in 2016, we opened the Urban Residences. Our business model has remained the same, and several of our early staff are still with us.">
+                <div class="story-image-col" style="background-image: url('../../images/screenshot-2018-12-23-at-14-43-08.webp');"></div>
+                <div class="story-text-col">
+                    <h2 class="story-title">Expansion & Legacy</h2>
+                    <div class="story-description">
+                        <p>Three years later, we added a resort with 16 rooms, and then expanded into Phnom Penh in 2013 with a 19-room resort. Most recently, in 2016, we opened the Urban Residences. Our business model has remained the same, and several of our early staff are still with us.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <!-- back to top -->
-    <div class="back-to-top">
-        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
-            <i class="fa-solid fa-chevron-up"></i>
-        </a>
+        <!-- back to top -->
+        <div class="back-to-top">
+            <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
+                <i class="fa-solid fa-chevron-up"></i>
+            </a>
+        </div>
     </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-col footer-logo">
-                <img src="../../images/Logo-white.png" alt="Sonitori">
-            </div>
-            <div class="footer-col">
-                <h4>QUICK LINK</h4>
-                <a href="https://maps.app.goo.gl/A1VpfBTSutvgNhrm9">Map</a>
-                <a href="../../faq/index.html">FAQ</a>
-                <a href="../../policy-privacy/index.html">Policy Privacy</a>
-            </div>
-            <div class="footer-col">
-                <h4>RESERVATION</h4>
-                <a href="tel:+855011355534">+855(0)11 355 534</a>
-                <a href="mailto:bookings@sonitori.com">bookings@sonitori.com</a>
-            </div>
-            <div class="footer-col">
-                <h4>FOLLOW US</h4>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="payment-icons">
-                <span>Pay way :</span>
-                <img src="../../images/visa-card.webp" alt="visa">
-                <img src="../../images/master.webp" alt="mastercard">
-            </div>
-            <div>Copyright © Sonitori Phnom Penh</div>
-        </div>
-    </footer>
 
     <script>
         (function() {
+            const pageLoader = document.getElementById('pageLoader');
+            const mainContent = document.getElementById('mainContent');
+            
+            // Prevent scrolling while loader is visible
+            if (pageLoader && !pageLoader.classList.contains('hide')) {
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Hide loader and show content after page loads
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    if (pageLoader) {
+                        pageLoader.classList.add('hide');
+                    }
+                    if (mainContent) {
+                        mainContent.classList.add('visible');
+                    }
+                    // Re-enable scrolling
+                    document.body.style.overflow = '';
+                }, 800);
+            });
+            
+            // Scroll animation observer
+            const animatedElements = [
+                document.getElementById('heroSlideshow'),
+                document.getElementById('mainHeading'),
+                document.getElementById('row1'),
+                document.getElementById('row2'),
+                document.getElementById('row3'),
+                document.getElementById('row4')
+            ].filter(el => el);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+            animatedElements.forEach(el => observer.observe(el));
+            
             // Hero slideshow with local images
             const heroImages = [
                 '../../images/dsc02703.webp',
@@ -1083,28 +1207,9 @@
                 e.preventDefault();
                 openBookingPopup();
             });
-
-            // Scroll animation observer
-            const animatedElements = [
-                document.getElementById('mainHeading'),
-                document.getElementById('row1'),
-                document.getElementById('row2'),
-                document.getElementById('row3'),
-                document.getElementById('row4')
-            ].filter(el => el);
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
-
-            animatedElements.forEach(el => observer.observe(el));
         })();
     </script>
     <script src="../../bookingsPopup/booking.js"></script>
+    <script src="../../js/footer.js"></script>
 </body>
 </html>

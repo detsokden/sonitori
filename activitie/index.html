@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <!-- Primary Meta Tags -->
+    <title>Activities | Sonitori Resort Phnom Penh | Things to Do in Cambodia</title>
+    <meta name="title" content="Activities | Sonitori Resort Phnom Penh">
+    <meta name="description" content="Discover exciting activities at Sonitori Resort Phnom Penh. Explore Khmer cooking classes, guided tours, spa treatments, and more. Download our activity guide today.">
+    <meta name="keywords" content="Sonitori activities, things to do in Phnom Penh, Cambodia tours, cooking classes, spa treatments, LGBTQ+ friendly resort">
+    <meta name="author" content="Sonitori Resort">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sonitori.com/activitie/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sonitori.com/activitie/">
+    <meta property="og:title" content="Activities | Sonitori Resort Phnom Penh">
+    <meta property="og:description" content="Discover exciting activities at Sonitori Resort. Explore Khmer cooking classes, guided tours, spa treatments, and more.">
+    <meta property="og:image" content="https://sonitori.com/images/activities-og.jpg">
+    <meta property="og:site_name" content="Sonitori Resort">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://sonitori.com/activitie/">
+    <meta name="twitter:title" content="Activities | Sonitori Resort Phnom Penh">
+    <meta name="twitter:description" content="Discover exciting activities at Sonitori Resort.">
+    <meta name="twitter:image" content="https://sonitori.com/images/activities-twitter.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/top-logo.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../bookingsPopup/booking.css">
-    <title>Activities · Sonitori Phnom Penh</title>
+    
     <style>
         * {
             margin: 0;
@@ -22,7 +57,92 @@
             font-size: 1rem;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* ===== FULL SCREEN LOADER ===== */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 243, 240, 0.98);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .page-loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-container-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .loader-logo {
+            width: 130px;
+            height: auto;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        .loader-spinner-horizontal {
+            width: 28px;
+            height: 28px;
+            border: 3px solid rgba(9,118,132,0.2);
+            border-top: 3px solid #097684;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text-horizontal {
+            color: #097684;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide content initially */
+        .main-content {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .main-content.visible {
+            visibility: visible;
+            opacity: 1;
         }
 
         /* ===== NAVIGATION ===== */
@@ -36,6 +156,7 @@
             box-shadow: 0 4px 18px rgba(0,0,0,0.03);
             padding: 0.7rem 5%;
             border-bottom: 1px solid #e2ddd6;
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -50,6 +171,7 @@
             height: 50px;
             width: auto;
             filter: brightness(0.9);
+            transition: 0.2s;
         }
 
         .nav-links {
@@ -66,16 +188,57 @@
             color: #3b3a38;
             letter-spacing: 0.3px;
             transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: #097684; }
-        .nav-links a.active { 
-            font-weight: 500; 
-            color: #097684;
-            border-bottom: 1px solid #097684;
-            margin-bottom: -1px;
+            position: relative;
+            padding: 0.5rem 0;
         }
         
+        /* Navigation hover underline animation */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #097684;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover { 
+            color: #097684; 
+        }
+        
+        /* Active navigation - Small dot on the left for regular links */
+        .nav-links > a.active { 
+            font-weight: 500; 
+            color: #097684;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .nav-links > a.active::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #097684;
+            font-size: 0.7rem;
+        }
+        
+        .nav-links > a.active::after {
+            display: none;
+        }
+        
+        /* Remove underline from dropdown trigger */
+        .nav-links .dropdown-trigger::after {
+            background: rgba(0, 0, 0, 0) !important;
+        }
+
         .desktop-book-btn {
             background: transparent;
             border: 1px solid #097684;
@@ -84,7 +247,7 @@
             border-radius: 40px;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.3s ease;
             font-size: 0.95rem;
             letter-spacing: 0.5px;
         }
@@ -93,6 +256,8 @@
             background: #097684;
             border-color: #097684;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(9,118,132,0.3);
         }
 
         .mobile-menu-icon {
@@ -658,11 +823,23 @@
             color: #065a66;
         }
 
+        /* scroll animations */
+        .content-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ===== BACK TO TOP ===== */
         .back-to-top {
             display: flex;
             justify-content: center;
-            margin: 2rem 0 1rem;
+            margin: 3rem 0 -3.5rem;
         }
         
         .back-to-top a {
@@ -688,18 +865,13 @@
         
         .back-to-top a i {
             font-size: 1.2rem;
-        }
-
-        /* scroll animations */
-        .content-section {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: bounce 2s ease-in-out infinite;
         }
         
-        .content-section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
         }
 
         /* responsive */
@@ -733,93 +905,6 @@
             .highlight-box { padding: 1.2rem; }
             .card-image { height: 250px; }
         }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: #1f2a2e;
-            color: #ddd;
-            padding: 3rem 2rem 1rem;
-            margin-top: 0;
-        }
-        
-        .footer-content {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-        
-        .footer-col {
-            flex: 1 1 200px;
-        }
-        
-        .footer-logo img {
-            max-width: 200px;
-            height: auto;
-            margin-bottom: 1rem;
-        }
-        
-        .footer h4 {
-            color: #fff;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-        
-        .footer a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-        
-        .footer a:hover { color: #097684; }
-        
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .social-icons a {
-            background: rgba(255,255,255,0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            transition: 0.2s;
-        }
-        
-        .social-icons a:hover { background: #097684; }
-        
-        .footer-bottom {
-            max-width: 1300px;
-            margin: 2rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid #3a4549;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-        
-        .payment-icons {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .payment-icons img {
-            height: 28px;
-        }
     </style>
 </head>
 <body>
@@ -837,7 +922,7 @@
                 <a href="../event/index.html">Events</a>
                 <a href="../gallery/index.html">Gallery</a>
                 <div class="dropdown">
-                    <a href="" class="dropdown-trigger">About Us <span class="dropdown-arrow"><i class="fa-solid fa-angle-down"></i></span></a>
+                    <a href="#" class="dropdown-trigger">About Us <span class="dropdown-arrow"><i class="fa-solid fa-angle-down"></i></span></a>
                     <div class="dropdown-menu">
                         <a href="../about-us/our-story/index.html">Our Story</a>
                         <a href="../about-us/community/index.html">Community</a>
@@ -889,11 +974,11 @@
             <div class="sidebar-social">
                 <h4>FOLLOW US</h4>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                <a href="https://www.facebook.com/RambutanResort" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/rambutanphnompenh/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCrRnbks0gWe8GTaYuu7Ec4Q" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.google.com/travel/search?q=rambutan%20phnom%20penh&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72560029%2C72573224%2C72616120%2C72619927%2C72628719%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72808078%2C72825294%2C72827241%2C72832976%2C72852292%2C72880929%2C72882230%2C72885032%2C72894324%2C72895620%2C72903276&hl=en-KH&gl=kh&cs=1&ssta=1&ts=CAEaOAoYEhYKCC9tLzBkbHdqOgpQaG5vbSBQZW5oEhwSFAoHCOkPEAMYHxIHCOkPEAQYARgBMgQIABAAKgcKBToDS0hS&qs=CAEyJkNoZ0kwTV9BcUx5em1iMEZHZ3d2Wnk4eE1qUnpjWGxqTVhjUUFROARCCRFPysEsWX26sUIJESvnhVcJ7BBRSABaQTI_qgE8EAEyHxABIhu5kQRKGJHzIYCAsFbNkOc2s_YQTWeaT6mp4JcyFxACIhNyYW1idXRhbiBwaG5vbSBwZW5o&ap=KigKEgkZbQJs5wQlQBEestwtROZZQBISCUgKqEGswCxAER6y3C2ES1pAMABoAboBB3Jldmlld3M&ictx=111&ved=0CAAQ5JsGahcKEwjIo7CP0LqTAxUAAAAAHQAAAAAQCA" target="_blank"><i class="fab fa-google"></i></a>
+                <a href="https://www.tripadvisor.com/Hotel_Review-g293940-d4039341-Reviews-Rambutan_Resort_Phnom_Penh-Phnom_Penh.html" target="_blank"><img src="../images/tripadvisor-certificate.webp" alt="Tripadvisor" width="25px"></a>
                 </div>
             </div>
         </div>
@@ -918,213 +1003,209 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <main class="activities-page">
-        <div class="section-heading content-section" id="mainHeading">Activities</div>
-
-        <!-- Two column layout: Text left, PDF right -->
-        <div class="activities-wrapper">
-            <!-- Left column: Text content -->
-            <div class="text-content">
-                <div class="content-block content-section" id="intro">
-                    <p>At <strong>Sonitori Resort Cambodia</strong>, each day invites you to explore, relax, and connect with the vibrant culture and stunning landscapes of Cambodia.</p>
-                    
-                    <p>From <strong>Khmer cooking classes</strong> and <strong>guided tours of Angkor Wat and local temples</strong>, to <strong>rejuvenating spa treatments</strong> in our tropical garden setting, we offer unique and immersive activities for every type of traveler.</p>
-                    
-                    <p>Guests can <strong>cycle through scenic routes</strong>, <strong>swim in our saltwater pool</strong>, or unwind poolside with a signature cocktail. Families will love our fun and safe <strong>children's programs</strong>, while couples and solo travelers can enjoy peaceful wellness moments.</p>
-                    
-                    <p>As an <strong>LGBTQ+ friendly resort in Cambodia</strong>, Sonitori welcomes everyone into a safe, inclusive, and respectful environment. Whether you're visiting <strong>Phnom Penh</strong>, our team is here to help you plan meaningful experiences — both on-site and off.</p>
-                </div>
-
-                <div class="highlight-box content-section" id="highlight">
-                    <p><i class="fa-regular fa-lightbulb"></i> <strong>Looking for local experiences?</strong> Click the guide on the right for more details on tours, local attractions, and exclusive hotel offerings curated just for you.</p>
-                </div>
-
-                <div class="content-block content-section" id="closing">
-                    <p>Speak with our friendly Sonitori team to discover the best <strong>things to do in Cambodia</strong> during your stay. From cultural adventures to relaxing getaways, Sonitori is your perfect base for unforgettable memories.</p>
-                </div>
-            </div>
-
-            <!-- Right column: Sticky PDF card -->
-            <div class="pdf-sidebar content-section" id="pdfGrid">
-                <a href="https://rambutanphnompenh.com/wp-content/uploads/2025/06/pp-activity.pdf" class="pdf-card" target="_blank" rel="noopener noreferrer">
-                    <div class="card-image">
-                        <img src="https://rambutanphnompenh.com/wp-content/uploads/2025/06/pp-activity-727x1024.png" alt="Phnom Penh Activities Guide">
-                        <div class="card-overlay">
-                            <span class="download-badge"><i class="fa-solid fa-download"></i> Download PDF</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-title">
-                            Best Activities in Phnom Penh
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                        <div class="card-meta">
-                            <i class="fa-regular fa-file-pdf"></i>
-                            <span>Activity Guide</span>
-                        </div>
-                        <div class="card-description">
-                            Discover top tours, local attractions, and exclusive hotel offerings curated just for you.
-                        </div>
-                        <div class="card-footer">
-                            <span class="file-info">
-                                <i class="fa-regular fa-file"></i>
-                                PDF • 2.8 MB
-                            </span>
-                            <span class="download-link">
-                                Download <i class="fa-solid fa-arrow-down"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+    <!-- Full Screen Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-container-vertical">
+            <img src="../images/logo.png" alt="Sonitori Resort" class="loader-logo">
+            <div class="loader-spinner-horizontal"></div>
+            <div class="loader-text-horizontal">Loading Activities...</div>
         </div>
-    </main>
-
-    <!-- back to top -->
-    <div class="back-to-top">
-        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
-            <i class="fa-solid fa-chevron-up"></i>
-        </a>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-col footer-logo">
-                <img src="../images/Logo-white.png" alt="Sonitori">
-            </div>
-            <div class="footer-col">
-                <h4>QUICK LINK</h4>
-                <a href="https://maps.app.goo.gl/A1VpfBTSutvgNhrm9">Map</a>
-                <a href="../faq/index.html">FAQ</a>
-                <a href="../policy-privacy/index.html">Policy Privacy</a>
-            </div>
-            <div class="footer-col">
-                <h4>RESERVATION</h4>
-                <a href="tel:+855011355534">+855(0)11 355 534</a>
-                <a href="mailto:bookings@sonitori.com">bookings@sonitori.com</a>
-            </div>
-            <div class="footer-col">
-                <h4>FOLLOW US</h4>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+    <!-- MAIN CONTENT -->
+    <div class="main-content" id="mainContent">
+        <main class="activities-page">
+            <div class="section-heading content-section" id="mainHeading">Activities</div>
+
+            <!-- Two column layout: Text left, PDF right -->
+            <div class="activities-wrapper">
+                <!-- Left column: Text content -->
+                <div class="text-content">
+                    <div class="content-block content-section" id="intro">
+                        <p>At <strong>Sonitori Resort Cambodia</strong>, each day invites you to explore, relax, and connect with the vibrant culture and stunning landscapes of Cambodia.</p>
+                        
+                        <p>From <strong>Khmer cooking classes</strong> and <strong>guided tours of Angkor Wat and local temples</strong>, to <strong>rejuvenating spa treatments</strong> in our tropical garden setting, we offer unique and immersive activities for every type of traveler.</p>
+                        
+                        <p>Guests can <strong>cycle through scenic routes</strong>, <strong>swim in our saltwater pool</strong>, or unwind poolside with a signature cocktail. Families will love our fun and safe <strong>children's programs</strong>, while couples and solo travelers can enjoy peaceful wellness moments.</p>
+                        
+                        <p>As an <strong>LGBTQ+ friendly resort in Cambodia</strong>, Sonitori welcomes everyone into a safe, inclusive, and respectful environment. Whether you're visiting <strong>Phnom Penh</strong>, our team is here to help you plan meaningful experiences — both on-site and off.</p>
+                    </div>
+
+                    <div class="highlight-box content-section" id="highlight">
+                        <p><i class="fa-regular fa-lightbulb"></i> <strong>Looking for local experiences?</strong> Click the guide on the right for more details on tours, local attractions, and exclusive hotel offerings curated just for you.</p>
+                    </div>
+
+                    <div class="content-block content-section" id="closing">
+                        <p>Speak with our friendly Sonitori team to discover the best <strong>things to do in Cambodia</strong> during your stay. From cultural adventures to relaxing getaways, Sonitori is your perfect base for unforgettable memories.</p>
+                    </div>
+                </div>
+
+                <!-- Right column: Sticky PDF card -->
+                <div class="pdf-sidebar content-section" id="pdfGrid">
+                    <a href="https://rambutanphnompenh.com/wp-content/uploads/2025/06/pp-activity.pdf" class="pdf-card" target="_blank" rel="noopener noreferrer">
+                        <div class="card-image">
+                            <img src="https://rambutanphnompenh.com/wp-content/uploads/2025/06/pp-activity-727x1024.png" alt="Phnom Penh Activities Guide">
+                            <div class="card-overlay">
+                                <span class="download-badge"><i class="fa-solid fa-download"></i> Download PDF</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">
+                                Best Activities in Phnom Penh
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                            <div class="card-meta">
+                                <i class="fa-regular fa-file-pdf"></i>
+                                <span>Activity Guide</span>
+                            </div>
+                            <div class="card-description">
+                                Discover top tours, local attractions, and exclusive hotel offerings curated just for you.
+                            </div>
+                            <div class="card-footer">
+                                <span class="file-info">
+                                    <i class="fa-regular fa-file"></i>
+                                    PDF • 2.8 MB
+                                </span>
+                                <span class="download-link">
+                                    Download <i class="fa-solid fa-arrow-down"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
+        </main>
+
+        <!-- back to top -->
+        <div class="back-to-top">
+            <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
+                <i class="fa-solid fa-chevron-up"></i>
+            </a>
         </div>
-        <div class="footer-bottom">
-            <div class="payment-icons">
-                <span>Pay way :</span>
-                <img src="https://rambutanphnompenh.com/wp-content/uploads/2025/06/visa-card.png" alt="visa">
-                <img src="https://rambutanphnompenh.com/wp-content/uploads/2025/06/master.png" alt="mastercard">
-            </div>
-            <div>Copyright © Sonitori Phnom Penh</div>
-        </div>
-    </footer>
+    </div>
 
     <script>
-    (function() {
-        // ===== MOBILE SIDEBAR =====
-        const mobileIcon = document.querySelector('.mobile-menu-icon');
-        const sidebar = document.getElementById('mobileSidebar');
-        const overlay = document.getElementById('mobileOverlay');
-        const closeSidebar = document.getElementById('closeSidebar');
-        const dropdownToggle = document.getElementById('aboutDropdownToggle');
-        const aboutMobileMenu = document.getElementById('aboutMobileMenu');
-
-        function openMobileMenu() {
-            sidebar.classList.add('open');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileMenu() {
-            sidebar.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        if (mobileIcon) mobileIcon.addEventListener('click', openMobileMenu);
-        if (closeSidebar) closeSidebar.addEventListener('click', closeMobileMenu);
-        if (overlay) overlay.addEventListener('click', closeMobileMenu);
-
-        if (dropdownToggle && aboutMobileMenu) {
-            dropdownToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                this.classList.toggle('open');
-                
-                if (aboutMobileMenu.classList.contains('show')) {
-                    aboutMobileMenu.classList.remove('show');
-                } else {
-                    aboutMobileMenu.classList.add('show');
-                }
-            });
-        }
-
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 900 && sidebar && sidebar.classList.contains('open')) {
-                closeMobileMenu();
+        (function() {
+            const pageLoader = document.getElementById('pageLoader');
+            const mainContent = document.getElementById('mainContent');
+            
+            // Prevent scrolling while loader is visible
+            if (pageLoader && !pageLoader.classList.contains('hide')) {
+                document.body.style.overflow = 'hidden';
             }
-        });
+            
+            // Hide loader and show content after page loads
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    if (pageLoader) {
+                        pageLoader.classList.add('hide');
+                    }
+                    if (mainContent) {
+                        mainContent.classList.add('visible');
+                    }
+                    // Re-enable scrolling
+                    document.body.style.overflow = '';
+                }, 800);
+            });
+            
+            // ===== MOBILE SIDEBAR =====
+            const mobileIcon = document.querySelector('.mobile-menu-icon');
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            const closeSidebar = document.getElementById('closeSidebar');
+            const dropdownToggle = document.getElementById('aboutDropdownToggle');
+            const aboutMobileMenu = document.getElementById('aboutMobileMenu');
 
-        // ===== BOOK NOW BUTTONS =====
-        function openBookingPopup() {
-            const overlay = document.getElementById('popupOverlay');
-            const popup = document.getElementById('calendarPopup');
-            if (overlay && popup) {
+            function openMobileMenu() {
+                sidebar.classList.add('open');
                 overlay.classList.add('active');
-                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-        }
 
-        document.getElementById('desktopBookBtn')?.addEventListener('click', openBookingPopup);
-        document.getElementById('mobileFixedBook')?.addEventListener('click', function(e) {
-            e.preventDefault();
-            openBookingPopup();
-        });
+            function closeMobileMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
 
-        // Close popup
-        document.getElementById('closePopupBtn')?.addEventListener('click', function() {
-            document.getElementById('popupOverlay')?.classList.remove('active');
-            document.getElementById('calendarPopup')?.classList.remove('active');
-        });
+            if (mobileIcon) mobileIcon.addEventListener('click', openMobileMenu);
+            if (closeSidebar) closeSidebar.addEventListener('click', closeMobileMenu);
+            if (overlay) overlay.addEventListener('click', closeMobileMenu);
 
-        document.getElementById('popupOverlay')?.addEventListener('click', function() {
-            this.classList.remove('active');
-            document.getElementById('calendarPopup')?.classList.remove('active');
-        });
+            if (dropdownToggle && aboutMobileMenu) {
+                dropdownToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('open');
+                    
+                    if (aboutMobileMenu.classList.contains('show')) {
+                        aboutMobileMenu.classList.remove('show');
+                    } else {
+                        aboutMobileMenu.classList.add('show');
+                    }
+                });
+            }
 
-        // ===== SCROLL ANIMATIONS =====
-        const animatedElements = [
-            document.getElementById('mainHeading'),
-            document.getElementById('intro'),
-            document.getElementById('highlight'),
-            document.getElementById('closing'),
-            document.getElementById('pdfGrid')
-        ].filter(el => el !== null);
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 900 && sidebar && sidebar.classList.contains('open')) {
+                    closeMobileMenu();
                 }
             });
-        }, {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        });
 
-        animatedElements.forEach(el => {
-            observer.observe(el);
-        });
-    })();
+            // ===== BOOK NOW BUTTONS =====
+            function openBookingPopup() {
+                const overlay = document.getElementById('popupOverlay');
+                const popup = document.getElementById('calendarPopup');
+                if (overlay && popup) {
+                    overlay.classList.add('active');
+                    popup.classList.add('active');
+                }
+            }
+
+            document.getElementById('desktopBookBtn')?.addEventListener('click', openBookingPopup);
+            document.getElementById('mobileFixedBook')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                openBookingPopup();
+            });
+
+            // Close popup
+            document.getElementById('closePopupBtn')?.addEventListener('click', function() {
+                document.getElementById('popupOverlay')?.classList.remove('active');
+                document.getElementById('calendarPopup')?.classList.remove('active');
+            });
+
+            document.getElementById('popupOverlay')?.addEventListener('click', function() {
+                this.classList.remove('active');
+                document.getElementById('calendarPopup')?.classList.remove('active');
+            });
+
+            // ===== SCROLL ANIMATIONS =====
+            const animatedElements = [
+                document.getElementById('mainHeading'),
+                document.getElementById('intro'),
+                document.getElementById('highlight'),
+                document.getElementById('closing'),
+                document.getElementById('pdfGrid')
+            ].filter(el => el !== null);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        })();
     </script>
     <script src="../bookingsPopup/booking.js"></script>
+    <script src="../js/footer.js"></script>
 </body>
 </html>

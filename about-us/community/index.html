@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Community · Sonitori Phnom Penh | Engage, Contribute, Educate</title>
-    <!-- Font Awesome (for icons) -->
+    
+    <!-- Primary Meta Tags -->
+    <title>Community | Sonitori Resort Phnom Penh | Engage, Contribute, Educate</title>
+    <meta name="title" content="Community | Sonitori Resort Phnom Penh">
+    <meta name="description" content="Sonitori Resort is committed to community engagement, scholarship programs, environmental mission, and partnerships with local organizations in Cambodia.">
+    <meta name="keywords" content="Sonitori community, Cambodia community engagement, scholarship programs, environmental mission, community partnerships, sustainable tourism Cambodia">
+    <meta name="author" content="Sonitori Resort">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sonitori.com/about-us/community/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sonitori.com/about-us/community/">
+    <meta property="og:title" content="Community | Sonitori Resort Phnom Penh">
+    <meta property="og:description" content="Sonitori Resort is committed to community engagement, scholarship programs, and environmental mission.">
+    <meta property="og:image" content="https://sonitori.com/images/community-og.jpg">
+    <meta property="og:site_name" content="Sonitori Resort">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://sonitori.com/about-us/community/">
+    <meta name="twitter:title" content="Community | Sonitori Resort Phnom Penh">
+    <meta name="twitter:description" content="Sonitori Resort is committed to community engagement and environmental mission.">
+    <meta name="twitter:image" content="https://sonitori.com/images/community-twitter.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../images/top-logo.png">
+    <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../bookingsPopup/booking.css">
+    
     <style>
         * {
             margin: 0;
@@ -22,12 +56,91 @@
             font-size: 1rem;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            position: relative;
         }
 
         body.no-scroll {
             overflow: hidden;
             position: fixed;
             width: 100%;
+        }
+
+        /* ===== FULL SCREEN LOADER ===== */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 243, 240, 0.98);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .page-loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-container-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .loader-logo {
+            width: 130px;
+            height: auto;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        .loader-spinner-horizontal {
+            width: 28px;
+            height: 28px;
+            border: 3px solid rgba(9,118,132,0.2);
+            border-top: 3px solid #097684;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text-horizontal {
+            color: #097684;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide content initially */
+        .main-content {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .main-content.visible {
+            visibility: visible;
+            opacity: 1;
         }
 
         /* ===== NAVIGATION ===== */
@@ -41,6 +154,7 @@
             box-shadow: 0 4px 18px rgba(0,0,0,0.03);
             padding: 0.7rem 5%;
             border-bottom: 1px solid #e2ddd6;
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -55,6 +169,7 @@
             height: 50px;
             width: auto;
             filter: brightness(0.9);
+            transition: 0.2s;
         }
 
         .nav-links {
@@ -71,16 +186,57 @@
             color: #3b3a38;
             letter-spacing: 0.3px;
             transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: #097684; }
-        .nav-links a.active { 
-            font-weight: 500; 
-            color: #097684;
-            border-bottom: 1px solid #097684;
-            margin-bottom: -1px;
+            position: relative;
+            padding: 0.5rem 0;
         }
         
+        /* Navigation hover underline animation */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #097684;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover { 
+            color: #097684; 
+        }
+        
+        /* Active navigation - Small dot on the left for regular links */
+        .nav-links > a.active { 
+            font-weight: 500; 
+            color: #097684;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .nav-links > a.active::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #097684;
+            font-size: 0.7rem;
+        }
+        
+        .nav-links > a.active::after {
+            display: none;
+        }
+        
+        /* Remove underline from dropdown trigger */
+        .nav-links .dropdown-trigger::after {
+            background: rgba(0, 0, 0, 0) !important;
+        }
+
         .desktop-book-btn {
             background: transparent;
             border: 1px solid #097684;
@@ -89,7 +245,7 @@
             border-radius: 40px;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.3s ease;
             font-size: 0.95rem;
         }
 
@@ -97,6 +253,8 @@
             background: #097684;
             border-color: #097684;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(9,118,132,0.3);
         }
 
         .mobile-menu-icon {
@@ -328,6 +486,12 @@
             align-items: center;
             gap: 8px;
             border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-fixed-book:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(9,118,132,0.6);
         }
 
         @media (min-width: 901px) { .mobile-fixed-book { display: none; } }
@@ -376,6 +540,7 @@
             color: #3b3a38;
             font-size: 0.95rem;
             white-space: nowrap;
+            transition: all 0.2s ease;
         }
 
         .dropdown-menu a:hover {
@@ -515,6 +680,18 @@
             color: #097684;
         }
 
+        /* Scroll animation for hero */
+        .hero-slideshow {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .hero-slideshow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ===== MOBILE BOTTOM SHEET ===== */
         @media (max-width: 900px) {
             .section-heading { font-size: 2rem; letter-spacing: 3px; }
@@ -529,7 +706,7 @@
             .section-description li { font-size: 0.9rem; }
             
             /* Make sections clickable on mobile */
-            .content-section {
+            .content-section:not(.partners-section) {
                 cursor: pointer;
                 background: #fcfaf8;
                 border-radius: 16px;
@@ -539,7 +716,7 @@
                 transition: all 0.2s ease;
             }
             
-            .content-section:active {
+            .content-section:not(.partners-section):active {
                 background: #f5f2ef;
                 transform: scale(0.99);
             }
@@ -635,6 +812,11 @@
             font-weight: 600;
             cursor: pointer;
             margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .sheet-close:hover {
+            color: #065a66;
         }
         
         .sheet-overlay {
@@ -664,7 +846,7 @@
         .back-to-top {
             display: flex;
             justify-content: center;
-            margin: 3rem 0 1rem;
+            margin: 3rem 0 -3.5rem;
         }
         
         .back-to-top a {
@@ -684,6 +866,7 @@
         .back-to-top a:hover {
             background: #065a66;
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(9,118,132,0.4);
         }
         
         .back-to-top a i {
@@ -697,78 +880,13 @@
             60% { transform: translateY(-4px); }
         }
 
-        /* ===== FOOTER ===== */
-        .footer {
-            background: #1f2a2e;
-            color: #ddd;
-            padding: 3rem 2rem 1rem;
-            margin-top: 2rem;
-        }
-        
-        .footer-content {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-        
-        .footer-col { flex: 1 1 200px; }
-        .footer-logo img { max-width: 200px; height: auto; margin-bottom: 1rem; }
-        .footer h4 { color: #fff; font-weight: 400; margin-bottom: 1rem; letter-spacing: 1px; }
-        .footer a { color: #ccc; text-decoration: none; display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
-        .footer a:hover { color: #097684; }
-        
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .social-icons a {
-            background: rgba(255,255,255,0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-        
-        .social-icons a:hover { background: #097684; }
-        
-        .footer-bottom {
-            max-width: 1300px;
-            margin: 2rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid #3a4549;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-        
-        .payment-icons {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .payment-icons img { height: 28px; }
-
         @media (max-width: 600px) {
             .hero-slideshow { height: 200px; }
-            .social-icons { justify-content: center; }
             .partner-item { flex: 0 0 100px; }
             .partner-item img { max-width: 80px; max-height: 60px; }
             .partner-item a span { font-size: 0.75rem; }
         }
 
-        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
@@ -784,10 +902,10 @@
                 <a href="../../event/index.html">Events</a>
                 <a href="../../gallery/index.html">Gallery</a>
                 <div class="dropdown">
-                    <a href="" class="dropdown-trigger active">About Us <span class="dropdown-arrow"><i class="fa-solid fa-angle-down"></i></span></a>
+                    <a href="#" class="dropdown-trigger active">About Us <span class="dropdown-arrow"><i class="fa-solid fa-angle-down"></i></span></a>
                     <div class="dropdown-menu">
                         <a href="../our-story/index.html">Our Story</a>
-                        <a href="" class="active">Community</a>
+                        <a href="#" class="active">Community</a>
                         <a href="../reviews/index.html">Review</a>
                         <a href="../press-library/index.html">Press Library</a>
                     </div>
@@ -817,7 +935,7 @@
                 <div class="dropdown-menu-mobile show" id="aboutMobileMenu">
                     <div>
                         <a href="../our-story/index.html"><i class="fa-regular fa-compass"></i> Our Story</a>
-                        <a href="" class="active"><i class="fa-regular fa-handshake"></i> Community</a>
+                        <a href="#" class="active"><i class="fa-regular fa-handshake"></i> Community</a>
                         <a href="../reviews/index.html"><i class="fa-regular fa-star"></i> Review</a>
                         <a href="../press-library/index.html"><i class="fa-regular fa-newspaper"></i> Press Library</a>
                     </div>
@@ -827,11 +945,11 @@
             <div class="sidebar-social">
                 <h4>FOLLOW US</h4>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                <a href="https://www.facebook.com/RambutanResort" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/rambutanphnompenh/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCrRnbks0gWe8GTaYuu7Ec4Q" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.google.com/travel/search?q=rambutan%20phnom%20penh&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72560029%2C72573224%2C72616120%2C72619927%2C72628719%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72808078%2C72825294%2C72827241%2C72832976%2C72852292%2C72880929%2C72882230%2C72885032%2C72894324%2C72895620%2C72903276&hl=en-KH&gl=kh&cs=1&ssta=1&ts=CAEaOAoYEhYKCC9tLzBkbHdqOgpQaG5vbSBQZW5oEhwSFAoHCOkPEAMYHxIHCOkPEAQYARgBMgQIABAAKgcKBToDS0hS&qs=CAEyJkNoZ0kwTV9BcUx5em1iMEZHZ3d2Wnk4eE1qUnpjWGxqTVhjUUFROARCCRFPysEsWX26sUIJESvnhVcJ7BBRSABaQTI_qgE8EAEyHxABIhu5kQRKGJHzIYCAsFbNkOc2s_YQTWeaT6mp4JcyFxACIhNyYW1idXRhbiBwaG5vbSBwZW5o&ap=KigKEgkZbQJs5wQlQBEestwtROZZQBISCUgKqEGswCxAER6y3C2ES1pAMABoAboBB3Jldmlld3M&ictx=111&ved=0CAAQ5JsGahcKEwjIo7CP0LqTAxUAAAAAHQAAAAAQCA" target="_blank"><i class="fab fa-google"></i></a>
+                <a href="https://www.tripadvisor.com/Hotel_Review-g293940-d4039341-Reviews-Rambutan_Resort_Phnom_Penh-Phnom_Penh.html" target="_blank"><img src="../../images/tripadvisor-certificate.webp" alt="Tripadvisor" width="25px"></a>
                 </div>
             </div>
         </div>
@@ -854,6 +972,15 @@
         </div>
     </div>
 
+    <!-- Full Screen Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-container-vertical">
+            <img src="../../images/logo.png" alt="Sonitori Resort" class="loader-logo">
+            <div class="loader-spinner-horizontal"></div>
+            <div class="loader-text-horizontal">Loading Community...</div>
+        </div>
+    </div>
+
     <!-- Mobile bottom sheet overlay -->
     <div class="sheet-overlay" id="sheetOverlay"></div>
     
@@ -864,193 +991,201 @@
         <button class="sheet-close" id="sheetCloseBtn">Close</button>
     </div>
 
-    <main class="community-page">
-        <!-- hero slideshow with local images -->
-        <div class="hero-slideshow" id="heroSlideshow"></div>
-        <div class="spacer"></div>
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <main class="community-page">
+            <!-- hero slideshow with local images -->
+            <div class="hero-slideshow" id="heroSlideshow"></div>
+            <div class="spacer"></div>
 
-        <div class="section-heading" id="mainHeading">Community</div>
+            <div class="section-heading" id="mainHeading">Community</div>
 
-        <!-- SECTION 1: Engage, contribute, educate -->
-        <div class="content-section" id="section1" data-title="Engage, contribute, educate" data-content="<p>The management and staff at Sonitori's hotel and resort are not only part of the community they live and work in but strive to be positive, supportive members of their community, dedicated to contributing to the sustainable development of Cambodia and its people. We actively encourage our staff to better themselves, their families and engage in humanitarian projects in our community.</p>">
-            <h2 class="section-title">Engage, contribute, educate</h2>
-            <div class="section-description">
-                <p>The management and staff at Sonitori's hotel and resort are not only part of the community they live and work in but strive to be positive, supportive members of their community, dedicated to contributing to the sustainable development of Cambodia and its people. We actively encourage our staff to better themselves, their families and engage in humanitarian projects in our community.</p>
+            <!-- SECTION 1: Engage, contribute, educate -->
+            <div class="content-section" id="section1" data-title="Engage, contribute, educate" data-content="<p>The management and staff at Sonitori's hotel and resort are not only part of the community they live and work in but strive to be positive, supportive members of their community, dedicated to contributing to the sustainable development of Cambodia and its people. We actively encourage our staff to better themselves, their families and engage in humanitarian projects in our community.</p>">
+                <h2 class="section-title">Engage, contribute, educate</h2>
+                <div class="section-description">
+                    <p>The management and staff at Sonitori's hotel and resort are not only part of the community they live and work in but strive to be positive, supportive members of their community, dedicated to contributing to the sustainable development of Cambodia and its people. We actively encourage our staff to better themselves, their families and engage in humanitarian projects in our community.</p>
+                </div>
             </div>
+
+            <!-- SECTION 2: Scholarship programs -->
+            <div class="content-section" id="section2" data-title="Scholarship programs for staff and families" data-content="<p>Education is the key to breaking the poverty cycle and improving lives but for many of the Sonitori staff and families, higher education was previously out of reach. We are proud to say that through our scholarship program many of our staff and their children have now been enrolled or reintegrated into school. From kindergarten to university, they are studying subjects such as; law, tourism, business, finance, accounting, IT and English. A few of our team members are even studying for their Masters degrees.</p><p>We are very proud of them and their continued efforts to grow!</p>">
+                <h2 class="section-title">Scholarship programs for staff and families</h2>
+                <div class="section-description">
+                    <p>Education is the key to breaking the poverty cycle and improving lives but for many of the Sonitori staff and families, higher education was previously out of reach. We are proud to say that through our scholarship program many of our staff and their children have now been enrolled or reintegrated into school. From kindergarten to university, they are studying subjects such as; law, tourism, business, finance, accounting, IT and English. A few of our team members are even studying for their Masters degrees.</p>
+                    <p>We are very proud of them and their continued efforts to grow!</p>
+                </div>
+            </div>
+
+            <!-- SECTION 3: Environmental Mission -->
+            <div class="content-section" id="section3" data-title="Environmental Mission" data-content="<p>Cambodia is a country with many challenges in the past and even now. A lot of people have hardly the means to survive, electricity is scarce and expensive and even clean water is not available everywhere. We try as a hotel and guest in this country, not to add to the existing problems but to be a part of the solution. That's why we strive to be as clean and as limited as possible in the use of energy and potential pollutions. Together with our staff we strive to make a difference, by:</p><ul><li>Using organic local fruits and vegetables in our kitchen and bar</li><li>Recycling our cooking oil to return and transform into bio-diesel for the generator</li><li>Use accessories made from recycled plastic bags</li><li>Garbage bags, take-away meal boxes and straws made from compostable sugar cane residue</li><li>Joining on a regular base the 'city clean-up' events</li><li>Promoting the usage of reusable aluminum water bottles instead of plastic ones which can be refilled for free at the water stations in our hotels</li><li>Using Solar panels to pre-heat the hot water</li></ul><p>We hope you will support our efforts to minimize our impact on this beautiful society.</p>">
+                <h2 class="section-title">Environmental Mission</h2>
+                <div class="section-description">
+                    <p>Cambodia is a country with many challenges in the past and even now. A lot of people have hardly the means to survive, electricity is scarce and expensive and even clean water is not available everywhere. We try as a hotel and guest in this country, not to add to the existing problems but to be a part of the solution. That's why we strive to be as clean and as limited as possible in the use of energy and potential pollutions. Together with our staff we strive to make a difference, by:</p>
+                    <ul>
+                        <li>Using organic local fruits and vegetables in our kitchen and bar</li>
+                        <li>Recycling our cooking oil to return and transform into bio-diesel for the generator</li>
+                        <li>Use accessories made from recycled plastic bags</li>
+                        <li>Garbage bags, take-away meal boxes and straws made from compostable sugar cane residue</li>
+                        <li>Joining on a regular base the "city clean-up" events</li>
+                        <li>Promoting the usage of reusable aluminum water bottles instead of plastic ones which can be refilled for free at the water stations in our hotels</li>
+                        <li>Using Solar panels to pre-heat the hot water</li>
+                    </ul>
+                    <p>We hope you will support our efforts to minimize our impact on this beautiful society.</p>
+                </div>
+            </div>
+
+            <!-- SECTION 4: Community partnerships -->
+            <div class="content-section partners-section" id="section4">
+                <h2 class="section-title">Community partnerships</h2>
+                <div class="section-description">
+                    <p>At Sonitori Hotel and Resort, we are proud to partner with local organizations that have proven results in within the communities that they work.</p>
+                    <p>Here some of our long-standing community partnerships:</p>
+                </div>
+
+                <!-- Partners carousel/grid with local images -->
+                <div class="partners-carousel">
+                    <div class="partner-item">
+                        <a href="https://thinkchildsafe.org" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/ChildSafe-Movement.webp" alt="ChildSafe Movement" loading="lazy">
+                            <span>ChildSafe Movement</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://khmerstudies.org" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/CKS-Full-Logo-for-Website-2.webp" alt="Center for Khmer Studies" loading="lazy">
+                            <span>Center for Khmer Studies</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://concertcambodia.org" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/concert-logo.webp" alt="ConCERT Cambodia" loading="lazy">
+                            <span>ConCERT, Cambodia</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://www.greengeckoproject.org/" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/gglogo.webp" alt="Green Gecko Project" loading="lazy">
+                            <span>The Green Gecko Project</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="http://www.silkscreenprintinglab.com/" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/logo-for-website2.webp" alt="Silk Screen Printing Lab" loading="lazy">
+                            <span>Silk Screen Printing Lab</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://thislife.ngo/" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/logo-this-life-cambodia.webp" alt="This Life Cambodia" loading="lazy">
+                            <span>This Life Cambodia</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://www.plasticfreesea.co/" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/PFC-logo-color.webp" alt="Plastic Free Cambodia" loading="lazy">
+                            <span>Plastic Free Cambodia</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://www.salabai.com/" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/SB-logo-2021-official-khmer-white-scaled.webp" alt="Sala Bai Hotel School" loading="lazy">
+                            <span>Sala Bai Hotel School</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://www.spoonscambodia.org/" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/SPOONS_Logo.webp" alt="Spoons Cambodia" loading="lazy">
+                            <span>Spoons Cambodia (EGBOK)</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://wrccambodia.org/" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/wrc_logo_w360px1.webp" alt="Women's Resource Center" loading="lazy">
+                            <span>Women's Resource Center</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://cambodia.wcs.org/" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/wcs_logotype_0-scaled-1.webp" alt="Wildlife Conservation Society" loading="lazy">
+                            <span>Wildlife Conservation Society</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://onlyoneplanetkh.com/" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/only.webp" alt="Only One Planet" loading="lazy">
+                            <span>Only One Planet</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://refilltheworld.com/" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/refill-not-landfill-high-res_orig.webp" alt="Refill Not Landfill" loading="lazy">
+                            <span>Refill Not Landfill</span>
+                        </a>
+                    </div>
+                    <div class="partner-item">
+                        <a href="https://web.facebook.com/giantpuppetproject" target="_blank" rel="noopener noreferrer">
+                            <img src="../../images/Giant-Puppet-Project-Siem-Reap.webp" alt="Giant Puppet Project" loading="lazy">
+                            <span>Giant Puppet Project</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- back to top -->
+        <div class="back-to-top">
+            <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
+                <i class="fa-solid fa-chevron-up"></i>
+            </a>
         </div>
-
-        <!-- SECTION 2: Scholarship programs -->
-        <div class="content-section" id="section2" data-title="Scholarship programs for staff and families" data-content="<p>Education is the key to breaking the poverty cycle and improving lives but for many of the Sonitori staff and families, higher education was previously out of reach. We are proud to say that through our scholarship program many of our staff and their children have now been enrolled or reintegrated into school. From kindergarten to university, they are studying subjects such as; law, tourism, business, finance, accounting, IT and English. A few of our team members are even studying for their Masters degrees.</p><p>We are very proud of them and their continued efforts to grow!</p>">
-            <h2 class="section-title">Scholarship programs for staff and families</h2>
-            <div class="section-description">
-                <p>Education is the key to breaking the poverty cycle and improving lives but for many of the Sonitori staff and families, higher education was previously out of reach. We are proud to say that through our scholarship program many of our staff and their children have now been enrolled or reintegrated into school. From kindergarten to university, they are studying subjects such as; law, tourism, business, finance, accounting, IT and English. A few of our team members are even studying for their Masters degrees.</p>
-                <p>We are very proud of them and their continued efforts to grow!</p>
-            </div>
-        </div>
-
-        <!-- SECTION 3: Environmental Mission -->
-        <div class="content-section" id="section3" data-title="Environmental Mission" data-content="<p>Cambodia is a country with many challenges in the past and even now. A lot of people have hardly the means to survive, electricity is scarce and expensive and even clean water is not available everywhere. We try as a hotel and guest in this country, not to add to the existing problems but to be a part of the solution. That's why we strive to be as clean and as limited as possible in the use of energy and potential pollutions. Together with our staff we strive to make a difference, by:</p><ul><li>Using organic local fruits and vegetables in our kitchen and bar</li><li>Recycling our cooking oil to return and transform into bio-diesel for the generator</li><li>Use accessories made from recycled plastic bags</li><li>Garbage bags, take-away meal boxes and straws made from compostable sugar cane residue</li><li>Joining on a regular base the 'city clean-up' events</li><li>Promoting the usage of reusable aluminum water bottles instead of plastic ones which can be refilled for free at the water stations in our hotels</li><li>Using Solar panels to pre-heat the hot water</li></ul><p>We hope you will support our efforts to minimize our impact on this beautiful society.</p>">
-            <h2 class="section-title">Environmental Mission</h2>
-            <div class="section-description">
-                <p>Cambodia is a country with many challenges in the past and even now. A lot of people have hardly the means to survive, electricity is scarce and expensive and even clean water is not available everywhere. We try as a hotel and guest in this country, not to add to the existing problems but to be a part of the solution. That's why we strive to be as clean and as limited as possible in the use of energy and potential pollutions. Together with our staff we strive to make a difference, by:</p>
-                <ul>
-                    <li>Using organic local fruits and vegetables in our kitchen and bar</li>
-                    <li>Recycling our cooking oil to return and transform into bio-diesel for the generator</li>
-                    <li>Use accessories made from recycled plastic bags</li>
-                    <li>Garbage bags, take-away meal boxes and straws made from compostable sugar cane residue</li>
-                    <li>Joining on a regular base the "city clean-up" events</li>
-                    <li>Promoting the usage of reusable aluminum water bottles instead of plastic ones which can be refilled for free at the water stations in our hotels</li>
-                    <li>Using Solar panels to pre-heat the hot water</li>
-                </ul>
-                <p>We hope you will support our efforts to minimize our impact on this beautiful society.</p>
-            </div>
-        </div>
-
-        <!-- SECTION 4: Community partnerships -->
-        <div class="content-section partners-section" id="section4">
-            <h2 class="section-title">Community partnerships</h2>
-            <div class="section-description">
-                <p>At Sonitori Hotel and Resort, we are proud to partner with local organizations that have proven results in within the communities that they work.</p>
-                <p>Here some of our long-standing community partnerships:</p>
-            </div>
-
-            <!-- Partners carousel/grid with local images -->
-            <div class="partners-carousel">
-                <div class="partner-item">
-                    <a href="https://thinkchildsafe.org" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/ChildSafe-Movement.webp" alt="ChildSafe Movement" loading="lazy">
-                        <span>ChildSafe Movement</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://khmerstudies.org" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/CKS-Full-Logo-for-Website-2.webp" alt="Center for Khmer Studies" loading="lazy">
-                        <span>Center for Khmer Studies</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://concertcambodia.org" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/concert-logo.webp" alt="ConCERT Cambodia" loading="lazy">
-                        <span>ConCERT, Cambodia</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://www.greengeckoproject.org/" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/gglogo.webp" alt="Green Gecko Project" loading="lazy">
-                        <span>The Green Gecko Project</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="http://www.silkscreenprintinglab.com/" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/logo-for-website2.webp" alt="Silk Screen Printing Lab" loading="lazy">
-                        <span>Silk Screen Printing Lab</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://thislife.ngo/" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/logo-this-life-cambodia.webp" alt="This Life Cambodia" loading="lazy">
-                        <span>This Life Cambodia</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://www.plasticfreesea.co/" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/PFC-logo-color.webp" alt="Plastic Free Cambodia" loading="lazy">
-                        <span>Plastic Free Cambodia</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://www.salabai.com/" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/SB-logo-2021-official-khmer-white-scaled.webp" alt="Sala Bai Hotel School" loading="lazy">
-                        <span>Sala Bai Hotel School</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://www.spoonscambodia.org/" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/SPOONS_Logo.webp" alt="Spoons Cambodia" loading="lazy">
-                        <span>Spoons Cambodia (EGBOK)</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://wrccambodia.org/" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/wrc_logo_w360px1.webp" alt="Women's Resource Center" loading="lazy">
-                        <span>Women's Resource Center</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://cambodia.wcs.org/" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/wcs_logotype_0-scaled-1.webp" alt="Wildlife Conservation Society" loading="lazy">
-                        <span>Wildlife Conservation Society</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://onlyoneplanetkh.com/" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/only.webp" alt="Only One Planet" loading="lazy">
-                        <span>Only One Planet</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://refilltheworld.com/" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/refill-not-landfill-high-res_orig.webp" alt="Refill Not Landfill" loading="lazy">
-                        <span>Refill Not Landfill</span>
-                    </a>
-                </div>
-                <div class="partner-item">
-                    <a href="https://web.facebook.com/giantpuppetproject" target="_blank" rel="noopener noreferrer">
-                        <img src="../../images/Giant-Puppet-Project-Siem-Reap.webp" alt="Giant Puppet Project" loading="lazy">
-                        <span>Giant Puppet Project</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- back to top -->
-    <div class="back-to-top">
-        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
-            <i class="fa-solid fa-chevron-up"></i>
-        </a>
     </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-col footer-logo">
-                <img src="../../images/Logo-white.png" alt="Sonitori">
-            </div>
-            <div class="footer-col">
-                <h4>QUICK LINK</h4>
-                <a href="https://maps.app.goo.gl/A1VpfBTSutvgNhrm9">Map</a>
-                <a href="../../faq/index.html">FAQ</a>
-                <a href="../../policy-privacy/index.html">Policy Privacy</a>
-            </div>
-            <div class="footer-col">
-                <h4>RESERVATION</h4>
-                <a href="tel:+855011355534">+855(0)11 355 534</a>
-                <a href="mailto:bookings@sonitori.com">bookings@sonitori.com</a>
-            </div>
-            <div class="footer-col">
-                <h4>FOLLOW US</h4>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="payment-icons">
-                <span>Pay way :</span>
-                <img src="../../images/visa-card.webp" alt="visa">
-                <img src="../../images/master.webp" alt="mastercard">
-            </div>
-            <div>Copyright © Sonitori Phnom Penh</div>
-        </div>
-    </footer>
 
     <script>
         (function() {
+            const pageLoader = document.getElementById('pageLoader');
+            const mainContent = document.getElementById('mainContent');
+            
+            // Prevent scrolling while loader is visible
+            if (pageLoader && !pageLoader.classList.contains('hide')) {
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Hide loader and show content after page loads
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    if (pageLoader) {
+                        pageLoader.classList.add('hide');
+                    }
+                    if (mainContent) {
+                        mainContent.classList.add('visible');
+                    }
+                    // Re-enable scrolling
+                    document.body.style.overflow = '';
+                }, 800);
+            });
+            
+            // Scroll animation observer
+            const animatedElements = [
+                document.getElementById('heroSlideshow'),
+                document.getElementById('mainHeading'),
+                document.getElementById('section1'),
+                document.getElementById('section2'),
+                document.getElementById('section3'),
+                document.getElementById('section4')
+            ].filter(el => el);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+            animatedElements.forEach(el => observer.observe(el));
+            
             // Hero slideshow with local images
             const heroImages = [
                 '../../images/629893305_907396372157138_6233182403072246871_n.webp',
@@ -1063,6 +1198,7 @@
             const hero = document.getElementById('heroSlideshow');
             if (hero) {
                 hero.style.backgroundImage = `url('${heroImages[0]}')`;
+                hero.style.transition = 'background-image 1s ease-in-out';
                 setInterval(() => {
                     idx = (idx + 1) % heroImages.length;
                     hero.style.backgroundImage = `url('${heroImages[idx]}')`;
@@ -1185,28 +1321,9 @@
                 e.preventDefault();
                 openBookingPopup();
             });
-
-            // Scroll animation observer
-            const animatedElements = [
-                document.getElementById('mainHeading'),
-                document.getElementById('section1'),
-                document.getElementById('section2'),
-                document.getElementById('section3'),
-                document.getElementById('section4')
-            ].filter(el => el);
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
-
-            animatedElements.forEach(el => observer.observe(el));
         })();
     </script>
     <script src="../../bookingsPopup/booking.js"></script>
+    <script src="../../js/footer.js"></script>
 </body>
 </html>

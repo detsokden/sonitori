@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    
+    <!-- Main Pages -->
+    <url>
+        <loc>https://sonitori.com/</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://sonitori.com/images/hero-image.jpg</image:loc>
+            <image:title>Sonitori Resort Phnom Penh</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://sonitori.com/rooms/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://sonitori.com/images/rooms/standard-room.jpg</image:loc>
+            <image:title>Standard Room - Sonitori Resort</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://sonitori.com/images/rooms/deluxe-garden.jpg</image:loc>
+            <image:title>Deluxe Garden Room</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://sonitori.com/images/rooms/penthouse.jpg</image:loc>
+            <image:title>Penthouse Suite</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://sonitori.com/gallery/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://sonitori.com/event/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- About Us Pages -->
+    <url>
+        <loc>https://sonitori.com/about-us/our-story/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://sonitori.com/about-us/community/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://sonitori.com/about-us/reviews/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://sonitori.com/about-us/press-library/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <!-- Contact & Info -->
+    <url>
+        <loc>https://sonitori.com/contact-us/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://sonitori.com/faq/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>https://sonitori.com/policy-privacy/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- Featured Pages -->
+    <url>
+        <loc>https://sonitori.com/featured/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://sonitori.com/activitie/index.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+</urlset>

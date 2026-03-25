@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <!-- Primary Meta Tags -->
+    <title>Privacy Policy | Sonitori Resort Phnom Penh | Data Protection</title>
+    <meta name="title" content="Privacy Policy | Sonitori Resort Phnom Penh">
+    <meta name="description" content="Read Sonitori Resort's privacy policy to understand how we collect, use, and protect your personal information. Your privacy is important to us.">
+    <meta name="keywords" content="Sonitori privacy policy, data protection, personal information, hotel privacy, Cambodia privacy policy">
+    <meta name="author" content="Sonitori Resort">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sonitori.com/policy-privacy/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sonitori.com/policy-privacy/">
+    <meta property="og:title" content="Privacy Policy | Sonitori Resort Phnom Penh">
+    <meta property="og:description" content="Read Sonitori Resort's privacy policy to understand how we protect your personal information.">
+    <meta property="og:image" content="https://sonitori.com/images/privacy-og.jpg">
+    <meta property="og:site_name" content="Sonitori Resort">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://sonitori.com/policy-privacy/">
+    <meta name="twitter:title" content="Privacy Policy | Sonitori Resort Phnom Penh">
+    <meta name="twitter:description" content="Read Sonitori Resort's privacy policy to understand how we protect your personal information.">
+    <meta name="twitter:image" content="https://sonitori.com/images/privacy-twitter.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/top-logo.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../bookingsPopup/booking.css">
-    <title>Privacy Policy · Sonitori Phnom Penh</title>
+    
     <style>
         * {
             margin: 0;
@@ -22,7 +57,92 @@
             font-size: 1rem;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* ===== FULL SCREEN LOADER ===== */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 243, 240, 0.98);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .page-loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-container-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .loader-logo {
+            width: 130px;
+            height: auto;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        .loader-spinner-horizontal {
+            width: 28px;
+            height: 28px;
+            border: 3px solid rgba(9,118,132,0.2);
+            border-top: 3px solid #097684;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text-horizontal {
+            color: #097684;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide content initially */
+        .main-content {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .main-content.visible {
+            visibility: visible;
+            opacity: 1;
         }
 
         /* ===== NAVIGATION ===== */
@@ -36,6 +156,7 @@
             box-shadow: 0 4px 18px rgba(0,0,0,0.03);
             padding: 0.7rem 5%;
             border-bottom: 1px solid #e2ddd6;
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -50,6 +171,7 @@
             height: 50px;
             width: auto;
             filter: brightness(0.9);
+            transition: 0.2s;
         }
 
         .nav-links {
@@ -66,17 +188,57 @@
             color: #3b3a38;
             letter-spacing: 0.3px;
             transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: #097684; }
-        .nav-links a.active { 
-            font-weight: 500; 
-            color: #097684;
-            border-bottom: 1px solid #097684;
-            margin-bottom: -1px;
+            position: relative;
+            padding: 0.5rem 0;
         }
         
-        /* desktop book now button */
+        /* Navigation hover underline animation */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #097684;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover { 
+            color: #097684; 
+        }
+        
+        /* Active navigation - Small dot on the left for regular links */
+        .nav-links > a.active { 
+            font-weight: 500; 
+            color: #097684;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .nav-links > a.active::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #097684;
+            font-size: 0.7rem;
+        }
+        
+        .nav-links > a.active::after {
+            display: none;
+        }
+        
+        /* Remove underline from dropdown trigger */
+        .nav-links .dropdown-trigger::after {
+            background: rgba(0, 0, 0, 0) !important;
+        }
+
         .desktop-book-btn {
             background: transparent;
             border: 1px solid #097684;
@@ -85,7 +247,7 @@
             border-radius: 40px;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.3s ease;
             font-size: 0.95rem;
             letter-spacing: 0.5px;
         }
@@ -94,6 +256,8 @@
             background: #097684;
             border-color: #097684;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(9,118,132,0.3);
         }
 
         .mobile-menu-icon {
@@ -461,6 +625,18 @@
             border-radius: 12px;
         }
 
+        /* scroll animations */
+        .content-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ===== POLICY SECTION STYLES ===== */
         .policy-section {
             margin-bottom: 2.5rem;
@@ -557,7 +733,7 @@
         .back-to-top {
             display: flex;
             justify-content: center;
-            margin: 3rem 0 1rem;
+            margin: 3rem 0 -3.5rem;
         }
         
         .back-to-top a {
@@ -599,6 +775,7 @@
         }
         
         @media (max-width: 640px) {
+            .main-content { padding: 5rem 1rem 2rem; }
             .page-heading { font-size: 2rem; letter-spacing: 4px; }
             .policy-section-title { font-size: 1.4rem; }
             .policy-section-subtitle { font-size: 1.2rem; }
@@ -610,93 +787,6 @@
             .back-to-top a i {
                 font-size: 1.3rem;
             }
-        }
-
-        /* ===== FOOTER STYLES ===== */
-        .footer {
-            background: #1f2a2e;
-            color: #ddd;
-            padding: 3rem 2rem 1rem;
-            margin-top: 2rem;
-        }
-        
-        .footer-content {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-        
-        .footer-col {
-            flex: 1 1 200px;
-        }
-        
-        .footer-logo img {
-            max-width: 200px;
-            height: auto;
-            margin-bottom: 1rem;
-        }
-        
-        .footer h4 {
-            color: #fff;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-        
-        .footer a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-        
-        .footer a:hover { color: #097684; }
-        
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .social-icons a {
-            background: rgba(255,255,255,0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            transition: 0.2s;
-        }
-        
-        .social-icons a:hover { background: #097684; }
-        
-        .footer-bottom {
-            max-width: 1300px;
-            margin: 2rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid #3a4549;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-        
-        .payment-icons {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .payment-icons img {
-            height: 28px;
         }
     </style>
 </head>
@@ -715,7 +805,7 @@
                 <a href="../event/index.html">Events</a>
                 <a href="../gallery/index.html">Gallery</a>
                 <div class="dropdown">
-                    <a href="" class="dropdown-trigger">About Us <span class="dropdown-arrow"><i class="fa-solid fa-angle-down"></i></span></a>
+                    <a href="#" class="dropdown-trigger">About Us <span class="dropdown-arrow"><i class="fa-solid fa-angle-down"></i></span></a>
                     <div class="dropdown-menu">
                         <a href="../about-us/our-story/index.html">Our Story</a>
                         <a href="../about-us/community/index.html">Community</a>
@@ -725,7 +815,6 @@
                 </div>
                 <a href="../contact-us/index.html">Contact Us</a>
             </div>
-            <!-- desktop book now button -->
             <button class="desktop-book-btn" id="desktopBookBtn">Book Now</button>
             <div class="mobile-menu-icon"><i class="fas fa-bars"></i></div>
         </div>
@@ -746,7 +835,6 @@
             <a href="../event/index.html"><i class="fa-regular fa-calendar"></i> Events</a>
             <a href="../gallery/index.html"><i class="fa-regular fa-images"></i> Gallery</a>
             
-            <!-- About Us with dropdown -->
             <div class="mobile-dropdown">
                 <button class="dropdown-toggle-mobile" id="aboutDropdownToggle">
                     <span class="dropdown-icon-group">
@@ -766,15 +854,14 @@
 
             <a href="../contact-us/index.html"><i class="fa-regular fa-envelope"></i> Contact Us</a>
             
-            <!-- Social Media Section -->
             <div class="sidebar-social">
                 <h4>FOLLOW US</h4>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                <a href="https://www.facebook.com/RambutanResort" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/rambutanphnompenh/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCrRnbks0gWe8GTaYuu7Ec4Q" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.google.com/travel/search?q=rambutan%20phnom%20penh&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72560029%2C72573224%2C72616120%2C72619927%2C72628719%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72808078%2C72825294%2C72827241%2C72832976%2C72852292%2C72880929%2C72882230%2C72885032%2C72894324%2C72895620%2C72903276&hl=en-KH&gl=kh&cs=1&ssta=1&ts=CAEaOAoYEhYKCC9tLzBkbHdqOgpQaG5vbSBQZW5oEhwSFAoHCOkPEAMYHxIHCOkPEAQYARgBMgQIABAAKgcKBToDS0hS&qs=CAEyJkNoZ0kwTV9BcUx5em1iMEZHZ3d2Wnk4eE1qUnpjWGxqTVhjUUFROARCCRFPysEsWX26sUIJESvnhVcJ7BBRSABaQTI_qgE8EAEyHxABIhu5kQRKGJHzIYCAsFbNkOc2s_YQTWeaT6mp4JcyFxACIhNyYW1idXRhbiBwaG5vbSBwZW5o&ap=KigKEgkZbQJs5wQlQBEestwtROZZQBISCUgKqEGswCxAER6y3C2ES1pAMABoAboBB3Jldmlld3M&ictx=111&ved=0CAAQ5JsGahcKEwjIo7CP0LqTAxUAAAAAHQAAAAAQCA" target="_blank"><i class="fab fa-google"></i></a>
+                <a href="https://www.tripadvisor.com/Hotel_Review-g293940-d4039341-Reviews-Rambutan_Resort_Phnom_Penh-Phnom_Penh.html" target="_blank"><img src="../images/tripadvisor-certificate.webp" alt="Tripadvisor" width="25px"></a>
                 </div>
             </div>
         </div>
@@ -791,9 +878,7 @@
             <button class="close-popup" id="closePopupBtn"><i class="fa-solid fa-circle-xmark"></i></button>
         </div>
         
-        <div class="calendar-container" id="calendarContainer">
-            <!-- dynamic JS will fill two months -->
-        </div>
+        <div class="calendar-container" id="calendarContainer"></div>
         
         <div class="popup-footer">
             <div class="night-count">
@@ -803,17 +888,26 @@
         </div>
     </div>
 
+    <!-- Full Screen Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-container-vertical">
+            <img src="../images/logo.png" alt="Sonitori Resort" class="loader-logo">
+            <div class="loader-spinner-horizontal"></div>
+            <div class="loader-text-horizontal">Loading Privacy Policy...</div>
+        </div>
+    </div>
+
     <!-- MAIN CONTENT - PRIVACY POLICY PAGE -->
-    <div class="main-content">
+    <div class="main-content" id="mainContent">
         <!-- Page header -->
-        <div class="page-heading">PRIVACY POLICY</div>
+        <div class="page-heading content-section">PRIVACY POLICY</div>
         
-        <div class="policy-intro">
+        <div class="policy-intro content-section">
             This policy applies to information held about guests and prospective guests, suppliers and prospective suppliers, contractors, contacts, staff and all other persons about whom Sonitori Hotel and Resorts hold information. By "information," we mean personal information about you that we collect, use, share and store.
         </div>
 
         <!-- Section 1: What we collect -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">What we collect</h2>
             <div class="policy-content">
                 <ul>
@@ -825,7 +919,7 @@
         </div>
 
         <!-- Section 2: How we collect information -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">How we collect information about you</h2>
             <div class="policy-content">
                 <ul>
@@ -836,7 +930,7 @@
         </div>
 
         <!-- Section 3: What we do with the information -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">What we do with the information we gather</h2>
             <div class="policy-content">
                 <p>We use your information to:</p>
@@ -852,7 +946,7 @@
         </div>
 
         <!-- Section 4: Legal basis for processing -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">Legal basis for processing</h2>
             <div class="policy-content">
                 <p>Our processing of your personal information is necessary in order to comply with a legal obligation to which we are subject.</p>
@@ -860,7 +954,7 @@
         </div>
 
         <!-- Section 5: Sharing your information -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">Sharing your information</h2>
             <div class="policy-content">
                 <p>Except as expressly set out in this policy we will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law to do so.</p>
@@ -877,7 +971,7 @@
         </div>
 
         <!-- Section 6: Your rights -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">Your rights</h2>
             <div class="policy-content">
                 <p>At any time, you have the right:</p>
@@ -898,7 +992,7 @@
         </div>
 
         <!-- Section 7: Marketing -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">Marketing</h2>
             <div class="policy-content">
                 <p>When you are one of our guests and/or have otherwise agreed to be contacted for marketing we may use your personal information to send you information about events & special offerings through our newsletter database. You can unsubscribe from receiving them at any time, by clicking on the unsubscribe button in our newsletters or by emailing <a href="mailto:news@sonitori.com" class="contact-info">news@sonitori.com</a></p>
@@ -907,7 +1001,7 @@
         </div>
 
         <!-- Section 8: How long will we keep your information -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">How long will we keep your information?</h2>
             <div class="policy-content">
                 <p>We will only keep the information we collect about you for as long as required for the purposes set out above or as required to comply with any legal obligations to which we are subject. This will involve us periodically reviewing our files to check that information is accurate, up-to-date and still required.</p>
@@ -916,7 +1010,7 @@
         </div>
 
         <!-- Section 9: Security -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">Security</h2>
             <div class="policy-content">
                 <p>We are committed to ensuring that your information is secure. In order to prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect.</p>
@@ -924,7 +1018,7 @@
         </div>
 
         <!-- Section 10: Links to other sites -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">Links to other sites</h2>
             <div class="policy-content">
                 <p>Our website may contain links to other sites, including via our social media buttons. While we try to link only to websites that share our high standards and respect for privacy, we are not responsible for the content, security, or privacy practices employed by other websites and a link does not constitute an endorsement of that website. Once you link to another website from our website you are subject to the terms and conditions of that website, including, but not limited to, its internet privacy policy and practices. Please check these policies before you submit any data to these websites.</p>
@@ -933,7 +1027,7 @@
         </div>
 
         <!-- Section 11: Complaints -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">Complaints</h2>
             <div class="policy-content">
                 <p>Questions, comments and requests regarding this policy are welcomed and should be addressed to <a href="mailto:gm@sonitori.com" class="contact-info">gm@sonitori.com</a></p>
@@ -941,7 +1035,7 @@
         </div>
 
         <!-- Section 12: Changes to this policy -->
-        <div class="policy-section">
+        <div class="policy-section content-section">
             <h2 class="policy-section-title">Changes to this policy</h2>
             <div class="policy-content">
                 <p>Any changes we make to our policy in the future will be posted on this page and, where appropriate, notified to you by e-mail. Please check back frequently to see any updates or changes to our policy.</p>
@@ -949,7 +1043,7 @@
         </div>
 
         <!-- Last updated -->
-        <div class="last-updated">
+        <div class="last-updated content-section">
             <i class="fa-regular fa-calendar-check" style="margin-right: 0.5rem; color: #097684;"></i>
             Last Updated: July 19, 2025
         </div>
@@ -962,46 +1056,43 @@
         </a>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-col footer-logo">
-                <img src="../images/Logo-white.png" alt="sonitori">
-            </div>
-            <div class="footer-col">
-                <h4>QUICK LINK</h4>
-                <a href="https://maps.app.goo.gl/A1VpfBTSutvgNhrm9">Map</a>
-                <a href="../faq/index.html">FAQ</a>
-                <a href="../policy-privacy/index.html">Policy Privacy</a>
-            </div>
-            <div class="footer-col">
-                <h4>RESERVATION</h4>
-                <a href="tel:+855011355534">+855(0)11 355 534</a>
-                <a href="mailto:bookings@sonitori.com">bookings@sonitori.com</a>
-            </div>
-            <div class="footer-col">
-                <h4>FOLLOW US</h4>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="payment-icons">
-                <span>Pay way :</span>
-                <img src="https://rambutanphnompenh.com/wp-content/uploads/2025/06/visa-card.png" alt="visa">
-                <img src="https://rambutanphnompenh.com/wp-content/uploads/2025/06/master.png" alt="mastercard">
-            </div>
-            <div>Copyright © Sonitori</div>
-        </div>
-    </footer>
-
     <script>
         (function() {
+            const pageLoader = document.getElementById('pageLoader');
+            const mainContent = document.getElementById('mainContent');
+            
+            // Prevent scrolling while loader is visible
+            if (pageLoader && !pageLoader.classList.contains('hide')) {
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Hide loader and show content after page loads
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    if (pageLoader) {
+                        pageLoader.classList.add('hide');
+                    }
+                    if (mainContent) {
+                        mainContent.classList.add('visible');
+                    }
+                    // Re-enable scrolling
+                    document.body.style.overflow = '';
+                }, 800);
+            });
+            
+            // Scroll animation observer
+            const animatedElements = document.querySelectorAll('.content-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+            animatedElements.forEach(el => observer.observe(el));
+            
             // ===== MOBILE SIDEBAR =====
             const mobileIcon = document.querySelector('.mobile-menu-icon');
             const sidebar = document.getElementById('mobileSidebar');
@@ -1026,7 +1117,6 @@
             if (closeSidebar) closeSidebar.addEventListener('click', closeMobileMenu);
             if (overlay) overlay.addEventListener('click', closeMobileMenu);
 
-            // SMOOTH DROPDOWN animation
             if (dropdownToggle) {
                 dropdownToggle.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1078,5 +1168,6 @@
         })();
     </script>
     <script src="../bookingsPopup/booking.js"></script>
+    <script src="../js/footer.js"></script>
 </body>
 </html>

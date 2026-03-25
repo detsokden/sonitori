@@ -298,7 +298,7 @@
     searchBtn.addEventListener('click', ()=>{
         if (!checkInDate || !checkOutDate) return;
         
-        const baseUrl = 'https://hotels.cloudbeds.com/reservation/v3GB0x#';
+        const baseUrl = 'https://hotels.cloudbeds.com/en/reservation/4y0OUx#';
         const checkinStr = `${checkInDate.getFullYear()}-${String(checkInDate.getMonth()+1).padStart(2,'0')}-${String(checkInDate.getDate()).padStart(2,'0')}`;
         const checkoutStr = `${checkOutDate.getFullYear()}-${String(checkOutDate.getMonth()+1).padStart(2,'0')}-${String(checkOutDate.getDate()).padStart(2,'0')}`;
         const url = `${baseUrl}checkin=${checkinStr}&checkout=${checkoutStr}`;

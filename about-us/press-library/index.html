@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Press Library · Sonitori Phnom Penh | Media Resources</title>
-    <!-- Font Awesome (for icons) -->
+    
+    <!-- Primary Meta Tags -->
+    <title>Press Library | Sonitori Resort Phnom Penh | Media Resources & Downloads</title>
+    <meta name="title" content="Press Library | Sonitori Resort Phnom Penh">
+    <meta name="description" content="Access Sonitori Phnom Penh's press library. Download brochures, media kits, press releases, and official documents. Media resources for journalists and partners.">
+    <meta name="keywords" content="Sonitori press, media library, press releases, hotel brochures, media kit, Sonitori downloads, press resources">
+    <meta name="author" content="Sonitori Resort">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sonitori.com/about-us/press-library/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sonitori.com/about-us/press-library/">
+    <meta property="og:title" content="Press Library | Sonitori Resort Phnom Penh">
+    <meta property="og:description" content="Access Sonitori's press library. Download brochures, media kits, and official documents.">
+    <meta property="og:image" content="https://sonitori.com/images/press-library-og.jpg">
+    <meta property="og:site_name" content="Sonitori Resort">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://sonitori.com/about-us/press-library/">
+    <meta name="twitter:title" content="Press Library | Sonitori Resort Phnom Penh">
+    <meta name="twitter:description" content="Access Sonitori's press library. Download brochures, media kits, and official documents.">
+    <meta name="twitter:image" content="https://sonitori.com/images/press-library-twitter.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../images/top-logo.png">
+    <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../bookingsPopup/booking.css">
+    
     <style>
         * {
             margin: 0;
@@ -22,12 +56,91 @@
             font-size: 1rem;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            position: relative;
         }
 
         body.no-scroll {
             overflow: hidden;
             position: fixed;
             width: 100%;
+        }
+
+        /* ===== FULL SCREEN LOADER ===== */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 243, 240, 0.98);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .page-loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-container-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .loader-logo {
+            width: 130px;
+            height: auto;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        .loader-spinner-horizontal {
+            width: 28px;
+            height: 28px;
+            border: 3px solid rgba(9,118,132,0.2);
+            border-top: 3px solid #097684;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text-horizontal {
+            color: #097684;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide content initially */
+        .main-content {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .main-content.visible {
+            visibility: visible;
+            opacity: 1;
         }
 
         /* ===== NAVIGATION ===== */
@@ -41,6 +154,7 @@
             box-shadow: 0 4px 18px rgba(0,0,0,0.03);
             padding: 0.7rem 5%;
             border-bottom: 1px solid #e2ddd6;
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -55,6 +169,7 @@
             height: 50px;
             width: auto;
             filter: brightness(0.9);
+            transition: 0.2s;
         }
 
         .nav-links {
@@ -71,16 +186,57 @@
             color: #3b3a38;
             letter-spacing: 0.3px;
             transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: #097684; }
-        .nav-links a.active { 
-            font-weight: 500; 
-            color: #097684;
-            border-bottom: 1px solid #097684;
-            margin-bottom: -1px;
+            position: relative;
+            padding: 0.5rem 0;
         }
         
+        /* Navigation hover underline animation */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #097684;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover { 
+            color: #097684; 
+        }
+        
+        /* Active navigation - Small dot on the left for regular links */
+        .nav-links > a.active { 
+            font-weight: 500; 
+            color: #097684;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .nav-links > a.active::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #097684;
+            font-size: 0.7rem;
+        }
+        
+        .nav-links > a.active::after {
+            display: none;
+        }
+        
+        /* Remove underline from dropdown trigger */
+        .nav-links .dropdown-trigger::after {
+            background: rgba(0, 0, 0, 0) !important;
+        }
+
         .desktop-book-btn {
             background: transparent;
             border: 1px solid #097684;
@@ -89,7 +245,7 @@
             border-radius: 40px;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.3s ease;
             font-size: 0.95rem;
         }
 
@@ -97,6 +253,8 @@
             background: #097684;
             border-color: #097684;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(9,118,132,0.3);
         }
 
         .mobile-menu-icon {
@@ -328,6 +486,12 @@
             align-items: center;
             gap: 8px;
             border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-fixed-book:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(9,118,132,0.6);
         }
 
         @media (min-width: 901px) { .mobile-fixed-book { display: none; } }
@@ -376,6 +540,7 @@
             color: #3b3a38;
             font-size: 0.95rem;
             white-space: nowrap;
+            transition: all 0.2s ease;
         }
 
         .dropdown-menu a:hover {
@@ -607,11 +772,23 @@
             letter-spacing: 1px;
         }
 
+        /* scroll animations */
+        .content-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ===== BACK TO TOP ===== */
         .back-to-top {
             display: flex;
             justify-content: center;
-            margin: 3rem 0 1rem;
+            margin: 3rem 0 -3.5rem;
         }
         
         .back-to-top a {
@@ -631,6 +808,7 @@
         .back-to-top a:hover {
             background: #065a66;
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(9,118,132,0.4);
         }
         
         .back-to-top a i {
@@ -642,81 +820,6 @@
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-8px); }
             60% { transform: translateY(-4px); }
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: #1f2a2e;
-            color: #ddd;
-            padding: 3rem 2rem 1rem;
-            margin-top: 2rem;
-        }
-
-        .footer-content {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-
-        .footer-col { flex: 1 1 200px; }
-        .footer-logo img { max-width: 200px; height: auto; margin-bottom: 1rem; }
-        .footer h4 { color: #fff; font-weight: 400; margin-bottom: 1rem; letter-spacing: 1px; }
-        .footer a { color: #ccc; text-decoration: none; display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
-        .footer a:hover { color: #097684; }
-        
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .social-icons a {
-            background: rgba(255,255,255,0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-        
-        .social-icons a:hover { background: #097684; }
-        
-        .footer-bottom {
-            max-width: 1300px;
-            margin: 2rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid #3a4549;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-        
-        .payment-icons {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .payment-icons img { height: 28px; }
-
-        /* scroll animations */
-        .content-section {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .content-section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         @media (max-width: 900px) {
@@ -733,10 +836,7 @@
             .intro-text { font-size: 0.95rem; margin-bottom: 2rem; }
             .card-title { font-size: 1.1rem; }
             .stats-section { flex-direction: column; gap: 1rem; }
-            .social-icons { justify-content: center; }
         }
-
-        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
@@ -752,12 +852,12 @@
                 <a href="../../event/index.html">Events</a>
                 <a href="../../gallery/index.html">Gallery</a>
                 <div class="dropdown">
-                    <a href="" class="dropdown-trigger active">About Us <span class="dropdown-arrow"><i class="fa-solid fa-angle-down"></i></span></a>
+                    <a href="#" class="dropdown-trigger active">About Us <span class="dropdown-arrow"><i class="fa-solid fa-angle-down"></i></span></a>
                     <div class="dropdown-menu">
                         <a href="../our-story/index.html">Our Story</a>
                         <a href="../community/index.html">Community</a>
                         <a href="../reviews/index.html">Review</a>
-                        <a href="" class="active">Press Library</a>
+                        <a href="#" class="active">Press Library</a>
                     </div>
                 </div>
                 <a href="../../contact-us/index.html">Contact Us</a>
@@ -787,7 +887,7 @@
                         <a href="../our-story/index.html"><i class="fa-regular fa-compass"></i> Our Story</a>
                         <a href="../community/index.html"><i class="fa-regular fa-handshake"></i> Community</a>
                         <a href="../reviews/index.html"><i class="fa-regular fa-star"></i> Review</a>
-                        <a href="" class="active"><i class="fa-regular fa-newspaper"></i> Press Library</a>
+                        <a href="#" class="active"><i class="fa-regular fa-newspaper"></i> Press Library</a>
                     </div>
                 </div>
             </div>
@@ -795,11 +895,11 @@
             <div class="sidebar-social">
                 <h4>FOLLOW US</h4>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                <a href="https://www.facebook.com/RambutanResort" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/rambutanphnompenh/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCrRnbks0gWe8GTaYuu7Ec4Q" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.google.com/travel/search?q=rambutan%20phnom%20penh&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72560029%2C72573224%2C72616120%2C72619927%2C72628719%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72808078%2C72825294%2C72827241%2C72832976%2C72852292%2C72880929%2C72882230%2C72885032%2C72894324%2C72895620%2C72903276&hl=en-KH&gl=kh&cs=1&ssta=1&ts=CAEaOAoYEhYKCC9tLzBkbHdqOgpQaG5vbSBQZW5oEhwSFAoHCOkPEAMYHxIHCOkPEAQYARgBMgQIABAAKgcKBToDS0hS&qs=CAEyJkNoZ0kwTV9BcUx5em1iMEZHZ3d2Wnk4eE1qUnpjWGxqTVhjUUFROARCCRFPysEsWX26sUIJESvnhVcJ7BBRSABaQTI_qgE8EAEyHxABIhu5kQRKGJHzIYCAsFbNkOc2s_YQTWeaT6mp4JcyFxACIhNyYW1idXRhbiBwaG5vbSBwZW5o&ap=KigKEgkZbQJs5wQlQBEestwtROZZQBISCUgKqEGswCxAER6y3C2ES1pAMABoAboBB3Jldmlld3M&ictx=111&ved=0CAAQ5JsGahcKEwjIo7CP0LqTAxUAAAAAHQAAAAAQCA" target="_blank"><i class="fab fa-google"></i></a>
+                <a href="https://www.tripadvisor.com/Hotel_Review-g293940-d4039341-Reviews-Rambutan_Resort_Phnom_Penh-Phnom_Penh.html" target="_blank"><img src="../../images/tripadvisor-certificate.webp" alt="Tripadvisor" width="25px"></a>
                 </div>
             </div>
         </div>
@@ -822,230 +922,229 @@
         </div>
     </div>
 
-    <main class="library-page">
-        <div class="section-heading content-section" id="mainHeading">Press Library</div>
-
-        <div class="intro-text content-section" id="intro">
-            <p>Access Sonitori Phnom Penh's press library — download brochures, media kits, and official documents to explore our story, services, and brand materials.</p>
+    <!-- Full Screen Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-container-vertical">
+            <img src="../../images/logo.png" alt="Sonitori Resort" class="loader-logo">
+            <div class="loader-spinner-horizontal"></div>
+            <div class="loader-text-horizontal">Loading Press Library...</div>
         </div>
-
-        <!-- library grid with local images and local PDF files - direct download -->
-        <div class="library-grid content-section" id="libraryGrid">
-            <!-- Khmer Chameleon -->
-            <a href="../../images/press-content/Khmer-Chameleon.pdf" class="library-card" target="_blank" data-pdf="../../images/press-content/Khmer-Chameleon.pdf" data-img="../../images/winq-pdf-1.webp" data-title="Khmer Chameleon" data-desc="A deep dive into the unique character and charm of Sonitori Phnom Penh." data-meta="Feature Story" data-size="2.4 MB">
-                <div class="card-image">
-                    <img src="../../images/winq-pdf-1.webp" alt="Khmer Chameleon">
-                    <div class="card-overlay">
-                        <span class="download-badge"><i class="fa-solid fa-download"></i> Download PDF</span>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Khmer Chameleon <i class="fa-solid fa-arrow-right"></i></div>
-                    <div class="card-meta"><i class="fa-regular fa-file-pdf"></i><span>Feature Story</span></div>
-                    <div class="card-description">A deep dive into the unique character and charm of Sonitori Phnom Penh.</div>
-                    <div class="card-footer">
-                        <span class="file-info"><i class="fa-regular fa-file"></i> PDF • 2.4 MB</span>
-                        <span class="download-link">Download <i class="fa-solid fa-arrow-down"></i></span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Passport Magazine -->
-            <a href="../../images/press-content/Passport.pdf" class="library-card" target="_blank" data-pdf="../../images/press-content/Passport.pdf" data-img="../../images/passport-mag-cambodia-2017-1-pdf-1.webp" data-title="Passport Magazine" data-desc="Cambodia's premier travel publication featuring Sonitori's unique hospitality." data-meta="Magazine Feature • 2017" data-size="3.1 MB">
-                <div class="card-image">
-                    <img src="../../images/passport-mag-cambodia-2017-1-pdf-1.webp" alt="Passport Magazine Cambodia 2017">
-                    <div class="card-overlay">
-                        <span class="download-badge"><i class="fa-solid fa-download"></i> Download PDF</span>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Passport Magazine <i class="fa-solid fa-arrow-right"></i></div>
-                    <div class="card-meta"><i class="fa-regular fa-file-pdf"></i><span>Magazine Feature • 2017</span></div>
-                    <div class="card-description">Cambodia's premier travel publication featuring Sonitori's unique hospitality.</div>
-                    <div class="card-footer">
-                        <span class="file-info"><i class="fa-regular fa-file"></i> PDF • 3.1 MB</span>
-                        <span class="download-link">Download <i class="fa-solid fa-arrow-down"></i></span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Oja Camboja / Feeling 2016 -->
-            <a href="../../images/press-content/ojaCamboja.pdf" class="library-card" target="_blank" data-pdf="../../images/press-content/ojaCamboja.pdf" data-img="../../images/feeling-2016-pdf-1.webp" data-title="Oja Camboja" data-desc="A comprehensive guide to Cambodia featuring Sonitori as a must-stay destination." data-meta="Travel Guide • 2016" data-size="2.8 MB">
-                <div class="card-image">
-                    <img src="../../images/feeling-2016-pdf-1.webp" alt="Feeling 2016">
-                    <div class="card-overlay">
-                        <span class="download-badge"><i class="fa-solid fa-download"></i> Download PDF</span>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Oja Camboja <i class="fa-solid fa-arrow-right"></i></div>
-                    <div class="card-meta"><i class="fa-regular fa-file-pdf"></i><span>Travel Guide • 2016</span></div>
-                    <div class="card-description">A comprehensive guide to Cambodia featuring Sonitori as a must-stay destination.</div>
-                    <div class="card-footer">
-                        <span class="file-info"><i class="fa-regular fa-file"></i> PDF • 2.8 MB</span>
-                        <span class="download-link">Download <i class="fa-solid fa-arrow-down"></i></span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- The Blue Print / Concept Design -->
-            <a href="../../images/press-content/the-blue-print.pdf" class="library-card" target="_blank" data-pdf="../../images/press-content/the-blue-print.pdf" data-img="../../images/concept-design-pdf-1.webp" data-title="The Blue Print" data-desc="Behind the scenes look at the architectural vision and design philosophy." data-meta="Concept Design" data-size="4.2 MB">
-                <div class="card-image">
-                    <img src="../../images/concept-design-pdf-1.webp" alt="Concept Design">
-                    <div class="card-overlay">
-                        <span class="download-badge"><i class="fa-solid fa-download"></i> Download PDF</span>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">The Blue Print <i class="fa-solid fa-arrow-right"></i></div>
-                    <div class="card-meta"><i class="fa-regular fa-file-pdf"></i><span>Concept Design</span></div>
-                    <div class="card-description">Behind the scenes look at the architectural vision and design philosophy.</div>
-                    <div class="card-footer">
-                        <span class="file-info"><i class="fa-regular fa-file"></i> PDF • 4.2 MB</span>
-                        <span class="download-link">Download <i class="fa-solid fa-arrow-down"></i></span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- stats section -->
-        <div class="stats-section content-section" id="stats">
-            <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">Years of Excellence</div></div>
-            <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Featured Publications</div></div>
-            <div class="stat-item"><div class="stat-number">2011-2021</div><div class="stat-label">Award Years</div></div>
-            <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Media Access</div></div>
-        </div>
-    </main>
-
-    <!-- back to top -->
-    <div class="back-to-top">
-        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
-            <i class="fa-solid fa-chevron-up"></i>
-        </a>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-col footer-logo"><img src="../../images/Logo-white.png" alt="Sonitori"></div>
-            <div class="footer-col">
-                <h4>QUICK LINK</h4>
-                <a href="https://maps.app.goo.gl/A1VpfBTSutvgNhrm9">Map</a>
-                <a href="../../faq/index.html">FAQ</a>
-                <a href="../../policy-privacy/index.html">Policy Privacy</a>
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <main class="library-page">
+            <div class="section-heading content-section" id="mainHeading">Press Library</div>
+
+            <div class="intro-text content-section" id="intro">
+                <p>Access Sonitori Phnom Penh's press library — download brochures, media kits, and official documents to explore our story, services, and brand materials.</p>
             </div>
-            <div class="footer-col">
-                <h4>RESERVATION</h4>
-                <a href="tel:+855011355534">+855(0)11 355 534</a>
-                <a href="mailto:bookings@sonitori.com">bookings@sonitori.com</a>
+
+            <!-- library grid with local images and local PDF files - direct download -->
+            <div class="library-grid content-section" id="libraryGrid">
+                <!-- Khmer Chameleon -->
+                <a href="../../images/press-content/Khmer-Chameleon.pdf" class="library-card" target="_blank" data-pdf="../../images/press-content/Khmer-Chameleon.pdf" data-img="../../images/winq-pdf-1.webp" data-title="Khmer Chameleon" data-desc="A deep dive into the unique character and charm of Sonitori Phnom Penh." data-meta="Feature Story" data-size="2.4 MB">
+                    <div class="card-image">
+                        <img src="../../images/winq-pdf-1.webp" alt="Khmer Chameleon">
+                        <div class="card-overlay">
+                            <span class="download-badge"><i class="fa-solid fa-download"></i> Download PDF</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Khmer Chameleon <i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="card-meta"><i class="fa-regular fa-file-pdf"></i><span>Feature Story</span></div>
+                        <div class="card-description">A deep dive into the unique character and charm of Sonitori Phnom Penh.</div>
+                        <div class="card-footer">
+                            <span class="file-info"><i class="fa-regular fa-file"></i> PDF • 2.4 MB</span>
+                            <span class="download-link">Download <i class="fa-solid fa-arrow-down"></i></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Passport Magazine -->
+                <a href="../../images/press-content/Passport.pdf" class="library-card" target="_blank" data-pdf="../../images/press-content/Passport.pdf" data-img="../../images/passport-mag-cambodia-2017-1-pdf-1.webp" data-title="Passport Magazine" data-desc="Cambodia's premier travel publication featuring Sonitori's unique hospitality." data-meta="Magazine Feature • 2017" data-size="3.1 MB">
+                    <div class="card-image">
+                        <img src="../../images/passport-mag-cambodia-2017-1-pdf-1.webp" alt="Passport Magazine Cambodia 2017">
+                        <div class="card-overlay">
+                            <span class="download-badge"><i class="fa-solid fa-download"></i> Download PDF</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Passport Magazine <i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="card-meta"><i class="fa-regular fa-file-pdf"></i><span>Magazine Feature • 2017</span></div>
+                        <div class="card-description">Cambodia's premier travel publication featuring Sonitori's unique hospitality.</div>
+                        <div class="card-footer">
+                            <span class="file-info"><i class="fa-regular fa-file"></i> PDF • 3.1 MB</span>
+                            <span class="download-link">Download <i class="fa-solid fa-arrow-down"></i></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Oja Camboja / Feeling 2016 -->
+                <a href="../../images/press-content/ojaCamboja.pdf" class="library-card" target="_blank" data-pdf="../../images/press-content/ojaCamboja.pdf" data-img="../../images/feeling-2016-pdf-1.webp" data-title="Oja Camboja" data-desc="A comprehensive guide to Cambodia featuring Sonitori as a must-stay destination." data-meta="Travel Guide • 2016" data-size="2.8 MB">
+                    <div class="card-image">
+                        <img src="../../images/feeling-2016-pdf-1.webp" alt="Feeling 2016">
+                        <div class="card-overlay">
+                            <span class="download-badge"><i class="fa-solid fa-download"></i> Download PDF</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Oja Camboja <i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="card-meta"><i class="fa-regular fa-file-pdf"></i><span>Travel Guide • 2016</span></div>
+                        <div class="card-description">A comprehensive guide to Cambodia featuring Sonitori as a must-stay destination.</div>
+                        <div class="card-footer">
+                            <span class="file-info"><i class="fa-regular fa-file"></i> PDF • 2.8 MB</span>
+                            <span class="download-link">Download <i class="fa-solid fa-arrow-down"></i></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- The Blue Print / Concept Design -->
+                <a href="../../images/press-content/the-blue-print.pdf" class="library-card" target="_blank" data-pdf="../../images/press-content/the-blue-print.pdf" data-img="../../images/concept-design-pdf-1.webp" data-title="The Blue Print" data-desc="Behind the scenes look at the architectural vision and design philosophy." data-meta="Concept Design" data-size="4.2 MB">
+                    <div class="card-image">
+                        <img src="../../images/concept-design-pdf-1.webp" alt="Concept Design">
+                        <div class="card-overlay">
+                            <span class="download-badge"><i class="fa-solid fa-download"></i> Download PDF</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">The Blue Print <i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="card-meta"><i class="fa-regular fa-file-pdf"></i><span>Concept Design</span></div>
+                        <div class="card-description">Behind the scenes look at the architectural vision and design philosophy.</div>
+                        <div class="card-footer">
+                            <span class="file-info"><i class="fa-regular fa-file"></i> PDF • 4.2 MB</span>
+                            <span class="download-link">Download <i class="fa-solid fa-arrow-down"></i></span>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="footer-col">
-                <h4>FOLLOW US</h4>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
-                </div>
+
+            <!-- stats section -->
+            <div class="stats-section content-section" id="stats">
+                <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">Years of Excellence</div></div>
+                <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Featured Publications</div></div>
+                <div class="stat-item"><div class="stat-number">2011-2021</div><div class="stat-label">Award Years</div></div>
+                <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Media Access</div></div>
             </div>
+        </main>
+
+        <!-- back to top -->
+        <div class="back-to-top">
+            <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
+                <i class="fa-solid fa-chevron-up"></i>
+            </a>
         </div>
-        <div class="footer-bottom">
-            <div class="payment-icons">
-                <span>Pay way :</span>
-                <img src="../../images/visa-card.webp" alt="visa">
-                <img src="../../images/master.webp" alt="mastercard">
-            </div>
-            <div>Copyright © Sonitori Phnom Penh</div>
-        </div>
-    </footer>
+    </div>
 
     <script>
-    (function() {
-        // Mobile sidebar
-        const mobileIcon = document.querySelector('.mobile-menu-icon');
-        const sidebar = document.getElementById('mobileSidebar');
-        const overlay = document.getElementById('mobileOverlay');
-        const closeSidebar = document.getElementById('closeSidebar');
-        const dropdownToggle = document.getElementById('aboutDropdownToggle');
-        const aboutMobileMenu = document.getElementById('aboutMobileMenu');
-
-        function openMobileMenu() {
-            sidebar.classList.add('open');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileMenu() {
-            sidebar.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        if (mobileIcon) mobileIcon.addEventListener('click', openMobileMenu);
-        if (closeSidebar) closeSidebar.addEventListener('click', closeMobileMenu);
-        if (overlay) overlay.addEventListener('click', closeMobileMenu);
-
-        if (dropdownToggle && aboutMobileMenu) {
-            dropdownToggle.classList.add('open');
-            aboutMobileMenu.classList.add('show');
+        (function() {
+            const pageLoader = document.getElementById('pageLoader');
+            const mainContent = document.getElementById('mainContent');
             
-            dropdownToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                this.classList.toggle('open');
-                
-                if (aboutMobileMenu.classList.contains('show')) {
-                    aboutMobileMenu.classList.remove('show');
-                } else {
-                    aboutMobileMenu.classList.add('show');
-                }
-            });
-        }
-
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 900 && sidebar.classList.contains('open')) closeMobileMenu();
-        });
-
-        // Booking popup
-        function openBookingPopup() {
-            const popupOverlay = document.getElementById('popupOverlay');
-            const popup = document.getElementById('calendarPopup');
-            if (popupOverlay && popup) {
-                popupOverlay.classList.add('active');
-                popup.classList.add('active');
+            // Prevent scrolling while loader is visible
+            if (pageLoader && !pageLoader.classList.contains('hide')) {
+                document.body.style.overflow = 'hidden';
             }
-        }
-        
-        document.getElementById('desktopBookBtn')?.addEventListener('click', openBookingPopup);
-        document.getElementById('mobileFixedBook')?.addEventListener('click', function(e) {
-            e.preventDefault();
-            openBookingPopup();
-        });
-
-        // Scroll animation observer
-        const animatedElements = [
-            document.getElementById('mainHeading'),
-            document.getElementById('intro'),
-            document.getElementById('libraryGrid'),
-            document.getElementById('stats')
-        ].filter(el => el);
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
+            
+            // Hide loader and show content after page loads
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    if (pageLoader) {
+                        pageLoader.classList.add('hide');
+                    }
+                    if (mainContent) {
+                        mainContent.classList.add('visible');
+                    }
+                    // Re-enable scrolling
+                    document.body.style.overflow = '';
+                }, 800);
             });
-        }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+            
+            // Mobile sidebar
+            const mobileIcon = document.querySelector('.mobile-menu-icon');
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            const closeSidebar = document.getElementById('closeSidebar');
+            const dropdownToggle = document.getElementById('aboutDropdownToggle');
+            const aboutMobileMenu = document.getElementById('aboutMobileMenu');
 
-        animatedElements.forEach(el => {
-            el.classList.add('content-section');
-            observer.observe(el);
-        });
-    })();
+            function openMobileMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileIcon) mobileIcon.addEventListener('click', openMobileMenu);
+            if (closeSidebar) closeSidebar.addEventListener('click', closeMobileMenu);
+            if (overlay) overlay.addEventListener('click', closeMobileMenu);
+
+            if (dropdownToggle && aboutMobileMenu) {
+                dropdownToggle.classList.add('open');
+                aboutMobileMenu.classList.add('show');
+                
+                dropdownToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('open');
+                    
+                    if (aboutMobileMenu.classList.contains('show')) {
+                        aboutMobileMenu.classList.remove('show');
+                    } else {
+                        aboutMobileMenu.classList.add('show');
+                    }
+                });
+            }
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 900 && sidebar.classList.contains('open')) closeMobileMenu();
+            });
+
+            // Booking popup
+            function openBookingPopup() {
+                const popupOverlay = document.getElementById('popupOverlay');
+                const popup = document.getElementById('calendarPopup');
+                if (popupOverlay && popup) {
+                    popupOverlay.classList.add('active');
+                    popup.classList.add('active');
+                }
+            }
+            
+            document.getElementById('desktopBookBtn')?.addEventListener('click', openBookingPopup);
+            document.getElementById('mobileFixedBook')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                openBookingPopup();
+            });
+
+            // Scroll animation observer
+            const animatedElements = [
+                document.getElementById('mainHeading'),
+                document.getElementById('intro'),
+                document.getElementById('libraryGrid'),
+                document.getElementById('stats')
+            ].filter(el => el);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+            animatedElements.forEach(el => {
+                el.classList.add('content-section');
+                observer.observe(el);
+            });
+        })();
     </script>
     <script src="../../bookingsPopup/booking.js"></script>
+    <script src="../../js/footer.js"></script>
 </body>
 </html>

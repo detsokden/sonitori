@@ -3,17 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Sonitori Phnom Penh · Boutique LGBTQ+ Resort in Cambodia</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Sonitori Phnom Penh | Boutique LGBTQ+ Resort in Cambodia | Luxury Urban Oasis</title>
+    <meta name="title" content="Sonitori Phnom Penh | LGBTQ+ Boutique Resort in Cambodia">
+    <meta name="description" content="Experience Phnom Penh's premier LGBTQ+ friendly boutique resort. Luxury rooms, saltwater pool, spa, and authentic Khmer hospitality in the heart of BKK1. Book your urban oasis at sonitori.com today!">
+    <meta name="keywords" content="Sonitori, Sonitori Phnom Penh, Sonitori Resort, boutique resort Cambodia, LGBTQ+ friendly hotel Phnom Penh, luxury resort Cambodia, BKK1 hotel, Phnom Penh accommodation, gay friendly resort Cambodia, Sonitori.com">
+    <meta name="author" content="Sonitori Resort">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sonitori.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sonitori.com/">
+    <meta property="og:title" content="Sonitori Phnom Penh | LGBTQ+ Boutique Resort in Cambodia">
+    <meta property="og:description" content="Experience Phnom Penh's premier LGBTQ+ friendly boutique resort. Luxury rooms, saltwater pool, spa, and authentic Khmer hospitality.">
+    <meta property="og:image" content="https://sonitori.com/images/og-image.jpg">
+    <meta property="og:site_name" content="Sonitori Resort">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://sonitori.com/">
+    <meta name="twitter:title" content="Sonitori Phnom Penh | LGBTQ+ Boutique Resort in Cambodia">
+    <meta name="twitter:description" content="Experience Phnom Penh's premier LGBTQ+ friendly boutique resort. Luxury rooms, saltwater pool, spa, and authentic Khmer hospitality.">
+    <meta name="twitter:image" content="https://sonitori.com/images/twitter-image.jpg">
+    
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="KH-12">
+    <meta name="geo.placename" content="Phnom Penh">
+    <meta name="geo.position" content="11.545036;104.922974">
+    <meta name="ICBM" content="11.545036, 104.922974">
+    
+    <!-- Business Information -->
+    <meta name="business:contact_data:country" content="Cambodia">
+    <meta name="business:contact_data:city" content="Phnom Penh">
+    <meta name="business:contact_data:street" content="Street 57, BKK1">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/top-logo.png">
-    <!-- Font Awesome 6 (free) -->
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Swiper CSS for sliders -->
+    
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <!-- Booking Popup CSS -->
     <link rel="stylesheet" href="bookingsPopup/booking.css">
+    
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Gveret+Levin&display=swap');
 
+    /* Loading Page Styles */
+    .loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #1f2a2e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .loader-wrapper.hide {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .loader {
+        text-align: center;
+    }
+    
+    .loader-logo {
+        width: 130px;
+        height: auto;
+        animation: pulse 1.5s ease-in-out infinite;
+        margin-bottom: 2rem;
+    }
+    
+    .loader-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(9,118,132,0.3);
+        border-top: 3px solid #097684;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+    }
+    
+    .loader-text {
+        color: #097684;
+        font-size: 1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 300;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+    }
+    
+    /* Scroll Animation Styles */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .stagger-children > * {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .stagger-children.visible > *:nth-child(1) { transition-delay: 0.1s; }
+    .stagger-children.visible > *:nth-child(2) { transition-delay: 0.2s; }
+    .stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; }
+    .stagger-children.visible > *:nth-child(4) { transition-delay: 0.4s; }
+    .stagger-children.visible > *:nth-child(5) { transition-delay: 0.5s; }
+    .stagger-children.visible > *:nth-child(6) { transition-delay: 0.6s; }
+    
+    .stagger-children.visible > * {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Hero Text Animation */
+    .hero-content h1 {
+        animation: slideUpFade 1s ease-out;
+    }
+    
+    .hero-content p {
+        animation: slideUpFade 1s ease-out 0.3s both;
+    }
+    
+    @keyframes slideUpFade {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Base Animation Classes */
+    .grid-2, .slider-section, .featured-grid, .amenities-container, 
+    .room-container, .reviews-grid, .maps-container {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .grid-2.visible, .slider-section.visible, .featured-grid.visible, 
+    .amenities-container.visible, .room-container.visible, 
+    .reviews-grid.visible, .maps-container.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Card hover animations */
+    .room-card, .review-card, .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .room-card:hover, .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(9,118,132,0.15);
+    }
+    
+    /* Navigation link hover animation */
+    .nav-links a {
+        position: relative;
+    }
+    
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #097684;
+        transition: width 0.3s ease;
+    }
+
+    .nav-links .dropdown-trigger::after {
+        background: rgba(0, 0, 0, 0) !important;
+    }
+    
+    .navbar.scrolled .nav-links a::after {
+        background: #097684;
+    }
+    
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+    
+    /* Button hover animations */
+    .desktop-book-btn, .btn, .discover-link {
+        transition: all 0.3s ease;
+    }
+    
+    .desktop-book-btn:hover, .btn:hover, .discover-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(9,118,132,0.3);
+    }
+    
+    
+    /* Feature card hover effect */
+    .feature-card {
+        transition: transform 0.4s ease;
+    }
+    
+    .feature-card:hover {
+        transform: scale(1.02);
+    }
+    
+    /* Back to top button animation */
+    .back-to-top a {
+        transition: all 0.3s ease;
+    }
+    
+    .back-to-top a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(9,118,132,0.4);
+    }
+    
     * {
         margin: 0;
         padding: 0;
@@ -28,6 +270,7 @@
         font-size: 0.95rem;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
     }
 
     body.no-scroll {
@@ -168,6 +411,11 @@
         border-color: #097684;
         color: #097684;
         background: transparent;
+    }
+
+    .navbar.scrolled .desktop-book-btn:hover {
+        background: #097684;
+        border-color: #097684;
     }
 
     .desktop-book-btn:hover {
@@ -518,18 +766,29 @@
         margin-right: auto;
     }
 
-    .section-title-left {
-        font-size: clamp(1.5rem, 4vw, 2rem);
-        font-weight: 300;
-        margin-bottom: 1.5rem;
-        color: #3e3a35;
-        letter-spacing: 1px;
-        border-bottom: 2px solid #097684;
-        padding-bottom: 0.5rem;
-        width: fit-content;
-        margin-left: 0;
-        margin-right: 0;
-    }
+    .cover-description {
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.6;
+  color: #333;
+  text-align: center;
+  
+}
+
+.cover-description h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.cover-description p {
+  margin-bottom: 15px;
+}
+
+.cover-description em {
+  color: #777;
+  font-size: 18px;
+}
 
     .grid-2 {
         display: grid;
@@ -875,7 +1134,7 @@
         gap: 0.5rem;
         max-width: 1300px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 10px;
     }
 
     .room-card {
@@ -901,7 +1160,7 @@
     }
 
     .room-info {
-        padding: 0.8rem;
+        padding: 0.8rem 0.7rem;
     }
 
     .room-info h3 {
@@ -1071,14 +1330,12 @@
         padding: 0.5rem;
         background: white;
         border-radius: 12px;
-        border: 1px solid #e2ddd6;
         transition: 0.2s;
     }
 
     .nearby-icon {
         width: 32px;
         height: 32px;
-        background: rgba(9,118,132,0.1);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1117,7 +1374,6 @@
         padding: 0.8rem;
         background: white;
         border-radius: 12px;
-        border: 1px solid #e2ddd6;
     }
 
     .location-item i {
@@ -1330,6 +1586,15 @@
 </head>
 <body>
 
+<!-- Loading Page -->
+<div class="loader-wrapper" id="loaderWrapper">
+    <div class="loader">
+        <img src="images/Logo-white.png" alt="Sonitori Resort" class="loader-logo">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Welcome to Sonitori</div>
+    </div>
+</div>
+
 <!-- Navigation -->
 <nav class="navbar" id="navbar">
     <div class="nav-container">
@@ -1396,11 +1661,11 @@
         <div class="sidebar-social">
             <h4>FOLLOW US</h4>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-google"></i></a>
-                <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                <a href="https://www.facebook.com/RambutanResort" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/rambutanphnompenh/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UCrRnbks0gWe8GTaYuu7Ec4Q" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.google.com/travel/search?q=rambutan%20phnom%20penh&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72471280%2C72472051%2C72481459%2C72485658%2C72560029%2C72573224%2C72616120%2C72619927%2C72628719%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72808078%2C72825294%2C72827241%2C72832976%2C72852292%2C72880929%2C72882230%2C72885032%2C72894324%2C72895620%2C72903276&hl=en-KH&gl=kh&cs=1&ssta=1&ts=CAEaOAoYEhYKCC9tLzBkbHdqOgpQaG5vbSBQZW5oEhwSFAoHCOkPEAMYHxIHCOkPEAQYARgBMgQIABAAKgcKBToDS0hS&qs=CAEyJkNoZ0kwTV9BcUx5em1iMEZHZ3d2Wnk4eE1qUnpjWGxqTVhjUUFROARCCRFPysEsWX26sUIJESvnhVcJ7BBRSABaQTI_qgE8EAEyHxABIhu5kQRKGJHzIYCAsFbNkOc2s_YQTWeaT6mp4JcyFxACIhNyYW1idXRhbiBwaG5vbSBwZW5o&ap=KigKEgkZbQJs5wQlQBEestwtROZZQBISCUgKqEGswCxAER6y3C2ES1pAMABoAboBB3Jldmlld3M&ictx=111&ved=0CAAQ5JsGahcKEwjIo7CP0LqTAxUAAAAAHQAAAAAQCA" target="_blank"><i class="fab fa-google"></i></a>
+                        <a href="https://www.tripadvisor.com/Hotel_Review-g293940-d4039341-Reviews-Rambutan_Resort_Phnom_Penh-Phnom_Penh.html" target="_blank"><img src="images/tripadvisor-certificate.webp" alt="Tripadvisor" width="25px"></a>
             </div>
         </div>
     </div>
@@ -1440,13 +1705,30 @@
 <div class="container">
     <div class="grid-2">
         <img src="images/screenshot-2018-12-23-at-14-41-37.webp" alt="Sonitori resort">
-        <div>
-            <h2 class="section-title-left">Sonitori Resort</h2>
-            <p style="font-size:1.2rem; color:#4a4540;">The Sonitori Resort in Phnom Penh is an urban oasis located in the elegant BKK1 business center of Phnom Penh. in a city environment.
-The Resort is designed in a modern Asian style with all luxuries and the addition of locally crafted furniture, modular terrazzo surfaces, vibrant Asian art, Cambodian crafted silks, secluded balconies, alfresco private stone bathtubs.
-There is a salt-water pool with waterfall, pool-bar, restaurant and a Spa, all set within a lush tropical garden.
-Sonitori Resort – Phnom Penh caters for the independent traveler who wants some privacy and luxury, we are a gay friendly venture and are closely aligning with the local community.</p>
-        </div>
+        <section class="cover-description">
+  <h1>Sonitori Resort – Phnom Penh</h1>
+
+  <p>
+    The Sonitori Resort in Phnom Penh is an urban oasis located in the elegant BKK1 business center. 
+    Designed in a modern Asian style, the resort offers all luxuries along with locally crafted furniture, 
+    modular terrazzo surfaces, vibrant Asian art, and Cambodian-crafted silks.
+  </p>
+
+  <p>
+    Each space features secluded balconies and alfresco private stone bathtubs, creating a relaxing and private atmosphere 
+    within the city.
+  </p>
+
+  <p>
+    The resort includes a saltwater pool with a waterfall, a pool bar, restaurant, and spa, 
+    all set within a lush tropical garden.
+  </p>
+
+  <p>
+    Sonitori Resort – Phnom Penh caters to independent travelers seeking privacy and luxury. 
+    We are a gay-friendly venture and are closely aligned with the local community.
+  </p>
+</section>
     </div>
 </div>
 
@@ -1454,7 +1736,7 @@ Sonitori Resort – Phnom Penh caters for the independent traveler who wants som
 <div class="feature-wrapper">
     <h2 class="section-title">Featured Specials</h2>
     <div class="aspect-ratio-container">
-        <div class="featured-grid">
+        <div class="featured-grid stagger-children">
             <a href="featured/index.html#spa" class="feature-card" style="background-image: url('images/compressed_image_7-scaled-e1752572386437.webp');">
                 <h3>Spa</h3>
                 <span class="discover-link">Discover <i class="fa-solid fa-arrow-right"></i></span>
@@ -1481,29 +1763,29 @@ Sonitori Resort – Phnom Penh caters for the independent traveler who wants som
         <div class="amenities-title">
             <h2>What Sonitori offers</h2>
         </div>
-        <div class="amenities-flex">
+        <div class="amenities-flex stagger-children">
             <div class="amenity-item">
-                <img src="images/download.png" alt="">
+                <img src="images/download.png" alt="Room Service Icon">
                 <h4>Room Service</h4>
                 <p>In-room dining and services.</p>
             </div>
             <div class="amenity-item">
-                <img src="images/download-1.png" alt="">
+                <img src="images/download-1.png" alt="WiFi Icon">
                 <h4>Free Wi‑Fi</h4>
                 <p>Internet access for guests.</p>
             </div>
             <div class="amenity-item">
-                <img src="images/download-2.png" alt="">
+                <img src="images/download-2.png" alt="Parking Icon">
                 <h4>Parking</h4>
                 <p>Guest vehicle parking.</p>
             </div>
             <div class="amenity-item">
-                <img src="images/download-3.png" alt="">
+                <img src="images/download-3.png" alt="Airport Transfer Icon">
                 <h4>Pick up/drop</h4>
-                <p>Indicates airport transfer services for guests.</p>
+                <p>Airport transfer services.</p>
             </div>
             <div class="amenity-item">
-                <img src="images/download-4.png" alt="">
+                <img src="images/download-4.png" alt="Activities Icon">
                 <h4>Activities Service</h4>
                 <p>In-room dining and services.</p>
             </div>
@@ -1546,9 +1828,9 @@ Sonitori Resort – Phnom Penh caters for the independent traveler who wants som
         <div class="slider-container">
             <div class="swiper smiles-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="images/bar-1resize-1.webp" alt=""></div>
-                    <div class="swiper-slide"><img src="images/Screenshot-2018-12-23-at-14.50.40.webp" alt=""></div>
-                    <div class="swiper-slide"><img src="images/Rambutan_Resort_PP_High_Res_06411-scaled.webp" alt=""></div>
+                    <div class="swiper-slide"><img src="images/bar-1resize-1.webp" alt="Sonitori Bar"></div>
+                    <div class="swiper-slide"><img src="images/Screenshot-2018-12-23-at-14.50.40.webp" alt="Sonitori Relaxation"></div>
+                    <div class="swiper-slide"><img src="images/Rambutan_Resort_PP_High_Res_06411-scaled.webp" alt="Sonitori Garden View"></div>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
@@ -1561,7 +1843,7 @@ Sonitori Resort – Phnom Penh caters for the independent traveler who wants som
 <!-- Rooms -->
 <div class="room-container">
     <h2 class="section-title">Our Accommodation</h2>
-    <div class="rooms-grid">
+    <div class="rooms-grid stagger-children">
         <a href="rooms/index.html#standard-room" class="room-card">
             <img src="images/Greg-Mo-Rambutan-PP-Low-04.webp" alt="Standard Room">
             <div class="room-info">
@@ -1613,7 +1895,7 @@ Sonitori Resort – Phnom Penh caters for the independent traveler who wants som
 <!-- GUEST REVIEWS -->
 <div class="container">
     <h2 class="section-title">What Our Guests Say</h2>
-    <div class="reviews-grid">
+    <div class="reviews-grid stagger-children">
         <div class="review-card">
             <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
             <p class="review-text">"Absolutely stunning property! The salt-water pool is incredible, and the staff went above and beyond to make our stay special. The garden views from our room were magical."</p>
@@ -1649,7 +1931,7 @@ Sonitori Resort – Phnom Penh caters for the independent traveler who wants som
     <h2 class="section-title">Find Us Here</h2>
     <div class="map-nearby-section">
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.09509298204!2d104.92297400000001!3d11.545036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109512716059b95%3A0x57a659bc51027d0!2sRambutan%20Resort%20-%20Phnom%20Penh!5e0!3m2!1sen!2skh!4v1773813007033!5m2!1sen!2skh" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.09509298204!2d104.92297400000001!3d11.545036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109512716059b95%3A0x57a659bc51027d0!2sRambutan%20Resort%20-%20Phnom%20Penh!5e0!3m2!1sen!2skh!4v1773813007033!5m2!1sen!2skh" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Sonitori Resort Location Map"></iframe>
         </div>
         <div class="nearby-places">
             <h3>Nearby Places</h3>
@@ -1680,47 +1962,50 @@ Sonitori Resort – Phnom Penh caters for the independent traveler who wants som
     </a>
 </div>
 
-<!-- footer with local payment icons -->
-<footer class="footer">
-    <div class="footer-grid">
-        <div class="footer-logo"><img src="images/Logo-white.png" style="width:200px;" alt="Sonitori"></div>
-        <div>
-            <h4>QUICK LINK</h4>
-            <a href="https://maps.app.goo.gl/A1VpfBTSutvgNhrm9">Map</a>
-            <p><a href="faq/index.html">FAQ</a></p>
-            <p><a href="policy-privacy/index.html">Policy Privacy</a></p>
-        </div>
-        <div>
-            <h4>RESERVATION</h4>
-            <p><a href="tel:+855011355534">+855(0)11 355 534</a></p>
-            <p><a href="mailto:bookings@sonitoriresort.com">bookings@sonitoriresort.com</a></p>
-        </div>
-        <div>
-            <h4>FOLLOW US</h4>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-google"></i></a>
-                <a href="#"><img src="images/tripadvisor-logo.webp" alt="" width="25px"></a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="payment-icons">
-            <span>Pay way :</span>
-            <img src="images/visa-card.webp" alt="visa">
-            <img src="images/master.webp" alt="mastercard">
-        </div>
-        <div>Copyright © Sonitori</div>
-    </div>
-</footer>
-
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/footer.js"></script>
 
 <script>
     (function() {
+        // Hide loader after page loads
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loaderWrapper');
+            if (loader) {
+                setTimeout(function() {
+                    loader.classList.add('hide');
+                    setTimeout(function() {
+                        loader.style.display = 'none';
+                    }, 500);
+                }, 1000);
+            }
+        });
+        
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements with animation classes
+        const animatedElements = document.querySelectorAll(
+            '.grid-2, .slider-section, .featured-grid, .amenities-container, ' +
+            '.room-container, .reviews-grid, .maps-container, .stagger-children'
+        );
+        
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+        
         const navbar = document.getElementById('navbar');
         const navbarLogo = document.getElementById('navbarLogo');
         
