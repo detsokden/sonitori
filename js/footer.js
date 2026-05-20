@@ -24,7 +24,7 @@
                 </div>
                 <div>
                     <h4>RESERVATION</h4>
-                    <p><a href="tel:+855011355534">+855(0)11 355 534</a></p>   <p><ahref="mailto:reservation.sonitori@gmail.com">reservation.sonitori@gmail.com</a></p>
+                    <p><a href="tel:+855011355534">+855(0)11 355 534</a></p>   <p><a href="mailto:reservation.sonitori@gmail.com">reservation.sonitori@gmail.com</a></p>
                 </div>
                 <div>
                     <h4>FOLLOW US</h4>
