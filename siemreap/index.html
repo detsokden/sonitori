@@ -31,7 +31,7 @@
         <span>Menu</span>
         <div class="menu-dropdown" id="menuDropdown">
           <a href="../" class="menu-dropdown-item">Home</a>
-          <a href="#" class="menu-dropdown-item"></a>
+          <a href="#" class="menu-dropdown-item">Room</a>
           <a href="#" class="menu-dropdown-item">Event</a>
           <a href="#" class="menu-dropdown-item">Gallery</a>
           <div class="menu-dropdown-item" id="aboutUsTrigger">
@@ -60,13 +60,12 @@
     </div>
 
     <div class="nav-right">
-      <span>Contacts</span>
       <span><a href="#" class="booking-link" id="bookingHeaderBtn">Booking&nbsp;&nbsp;→</a></span>
     </div>
   </header>
 
   <div class="hero-content">
-    <h1 class="hero-title" id="heroTitle">Welcome to Sonitori Siem Reap</h1>
+    <h1 class="hero-title" id="heroTitle">Welcome to Sonitori Riverside</h1>
     <p class="hero-subtitle">Your Gateway to Angkor &amp; City Views</p>
   </div>
 
@@ -139,7 +138,7 @@
 <!-- ===== SECTION 3 - 3 TABS: Dining, Rooftop, Activity ===== -->
 <section class="section-3" id="section3">
   <div class="section-label">✦ Discover Siem Reap</div>
-  <h2>Experiences at Sonitori City View</h2>
+  <h2>Experiences at Sonitori Riverside</h2>
 
   <div class="tabs-container" id="tabButtons">
     <button class="tab-btn active" data-tab="dining">Dining</button>
@@ -180,7 +179,7 @@
   <div class="offers-grid">
     <div class="offer-item">
       <span class="offer-icon"><i class="fas fa-concierge-bell"></i></span>
-      <div class="offer-title"> Service</div>
+      <div class="offer-title">Room Service</div>
       <div class="offer-divider"></div>
       <div class="offer-desc">In-room dining and services.</div>
     </div>
@@ -383,6 +382,8 @@
   </div>
 </section>
 <script src="footer.js"></script>
+<script src="mobile.js"></script>
+
 
 <style>
   /* ===== HIDDEN ELEMENTS ===== */
@@ -488,54 +489,55 @@
   })();
 
   // =============================================
-  // DESTINATION SELECTOR - NAVIGATE TO PAGES
-  // =============================================
-  (function() {
-    var currentDestination = document.getElementById('currentDestination');
-    var destinationDropdown = document.getElementById('destinationDropdown');
-    var destinationSelector = document.getElementById('destinationSelector');
-    var heroTitle = document.getElementById('heroTitle');
-    var menuDropdown = document.getElementById('menuDropdown');
+// DESTINATION SELECTOR - NAVIGATE TO PAGES
+// =============================================
+(function() {
+  var currentDestination = document.getElementById('currentDestination');
+  var destinationDropdown = document.getElementById('destinationDropdown');
+  var destinationSelector = document.getElementById('destinationSelector');
+  var heroTitle = document.getElementById('heroTitle');
+  var menuDropdown = document.getElementById('menuDropdown');
 
-    var currentPath = window.location.pathname;
-    var isPhnomPenh = currentPath.includes('phnompenh');
-    var isSiemReap = currentPath.includes('siemreap') || currentPath.endsWith('/') || currentPath.endsWith('index.html');
+  var currentPath = window.location.pathname;
+  var isPhnomPenh = currentPath.includes('phnompenh');
+  var isSiemReap = currentPath.includes('siemreap') || currentPath.endsWith('/') || currentPath.endsWith('index.html');
 
-    document.querySelectorAll('.destination-dropdown-item').forEach(function(item) {
-      var href = item.getAttribute('href');
-      if ((isPhnomPenh && href.includes('phnompenh')) || (isSiemReap && href.includes('siemreap'))) {
-        item.classList.add('active');
-        currentDestination.textContent = item.dataset.destination;
-        heroTitle.textContent = 'Welcome to Sonitori ' + item.dataset.destination;
-      } else {
-        item.classList.remove('active');
+
+  document.querySelectorAll('.destination-dropdown-item').forEach(function(item) {
+    var href = item.getAttribute('href');
+    if ((isPhnomPenh && href.includes('phnompenh')) || (isSiemReap && href.includes('siemreap'))) {
+      item.classList.add('active');
+      currentDestination.textContent = item.dataset.destination;
+      // REMOVED: heroTitle.textContent = 'Welcome to Sonitori ' + item.dataset.destination;
+    } else {
+      item.classList.remove('active');
+    }
+  });
+
+  document.querySelectorAll('.destination-dropdown-item').forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      var href = this.getAttribute('href');
+      if (href) {
+        window.location.href = href;
       }
     });
+  });
 
-    document.querySelectorAll('.destination-dropdown-item').forEach(function(item) {
-      item.addEventListener('click', function(e) {
-        e.preventDefault();
-        var href = this.getAttribute('href');
-        if (href) {
-          window.location.href = href;
-        }
-      });
-    });
+  destinationSelector.addEventListener('click', function(e) {
+    e.stopPropagation();
+    menuDropdown.classList.remove('active');
+    destinationDropdown.classList.toggle('active');
+    destinationSelector.classList.toggle('active');
+  });
 
-    destinationSelector.addEventListener('click', function(e) {
-      e.stopPropagation();
-      menuDropdown.classList.remove('active');
-      destinationDropdown.classList.toggle('active');
-      destinationSelector.classList.toggle('active');
-    });
-
-    document.addEventListener('click', function(e) {
-      if (!destinationSelector.contains(e.target)) {
-        destinationDropdown.classList.remove('active');
-        destinationSelector.classList.remove('active');
-      }
-    });
-  })();
+  document.addEventListener('click', function(e) {
+    if (!destinationSelector.contains(e.target)) {
+      destinationDropdown.classList.remove('active');
+      destinationSelector.classList.remove('active');
+    }
+  });
+})();
 
   // =============================================
   // CALENDAR + BOOKING
