@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sonitori · Siem Reap City View</title>
+  <link rel="icon" type="image/png" href="../uploads/top-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="heroSection">
+  <div class="hero-slides" id="heroSlides">
+    <img class="hero-slide active" src="uploads/top-page-photo.webp" alt="Sonitori view 1" loading="eager">
+    <img class="hero-slide" src="uploads/top-page-photo2.webp" alt="Sonitori view 2" loading="eager">
+    <img class="hero-slide" src="uploads/top-page-photo3.webp" alt="Sonitori view 3" loading="eager">
+    <img class="hero-slide" src="uploads/top-page-photo4.webp" alt="Sonitori view 4" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header id="mainHeader">
+    <div class="nav-left">
+      <div class="menu-btn nav-left-box" id="menuBtn">
+        <div class="menu-icon"></div>
+        <span>Menu</span>
+        <div class="menu-dropdown" id="menuDropdown">
+          <a href="../" class="menu-dropdown-item">Home</a>
+          <a href="#" class="menu-dropdown-item">Room</a>
+          <a href="#" class="menu-dropdown-item">Event</a>
+          <a href="#" class="menu-dropdown-item">Gallery</a>
+          <div class="menu-dropdown-item" id="aboutUsTrigger">
+            About Us <span class="sub-arrow">▸</span>
+            <div class="sub-dropdown" id="aboutUsSubDropdown">
+              <a href="#" class="sub-dropdown-item">Our Story</a>
+              <a href="#" class="sub-dropdown-item">Community</a>
+              <a href="#" class="sub-dropdown-item">Review</a>
+              <a href="#" class="sub-dropdown-item">Press Library</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="destination-selector nav-left-box" id="destinationSelector">
+        <span class="current-destination" id="currentDestination">Siem Reap</span>
+        <span class="dropdown-arrow">▾</span>
+        <div class="destination-dropdown" id="destinationDropdown">
+          <a href="../" class="destination-dropdown-item" data-destination="Phnom Penh">Phnom Penh</a>
+          <a href="../siemreap/" class="destination-dropdown-item active" data-destination="Siem Reap">Siem Reap</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="logo">
+      <img src="uploads/logo.png" alt="Sonitori Logo">
+    </div>
+
+    <div class="nav-right">
+      <span>Contacts</span>
+      <span><a href="#" class="booking-link" id="bookingHeaderBtn">Booking&nbsp;&nbsp;→</a></span>
+    </div>
+  </header>
+
+  <div class="hero-content">
+    <h1 class="hero-title" id="heroTitle">Welcome to Sonitori Siem Reap</h1>
+    <p class="hero-subtitle">Your Gateway to Angkor &amp; City Views</p>
+  </div>
+
+  <!-- ===== SCROLL DOWN ARROW ===== -->
+  <div id="scrollDown">
+    <span>Scroll</span>
+    <div class="arrow-icon"><i class="fas fa-chevron-down"></i></div>
+  </div>
+</section>
+
+<!-- ===== DATE PANEL ===== -->
+<div class="slide-panel" id="datePanel">
+  <div class="panel-title">
+    <span class="month-display">Select your dates</span>
+    <span class="month-nav">
+      <span id="prevMonth">◀</span>
+      <span id="nextMonth">▶</span>
+    </span>
+  </div>
+  <div class="calendar-wrapper">
+    <div class="calendar-month">
+      <div class="month-label" id="month1Label">January 2025</div>
+      <div class="calendar-grid" id="calendarGrid1"></div>
+    </div>
+    <div class="calendar-month">
+      <div class="month-label" id="month2Label">February 2025</div>
+      <div class="calendar-grid" id="calendarGrid2"></div>
+    </div>
+  </div>
+  <div class="panel-actions">
+    <button class="panel-btn" id="calCancel">Cancel</button>
+    <button class="panel-btn primary" id="calConfirm">Confirm</button>
+  </div>
+</div>
+<div class="panel-backdrop" id="panelBackdrop"></div>
+
+<!-- ===== SECTION 2 ===== -->
+<section class="section-2" id="section2">
+  <div class="section-2-inner">
+    <div class="section-2-text">
+      <div class="section-label">✦ Sonitori Siem Reap</div>
+      <h2>Newly Opened<br />City View Boutique Hotel</h2>
+      <p class="sub-text">
+        Welcome to Sonitori's newest addition — a boutique hotel in the heart of Siem Reap. 
+        Just minutes from the iconic Angkor Wat, our property offers modern comforts with 
+        stunning city views and authentic Cambodian hospitality.
+      </p>
+    </div>
+
+    <div class="collage-container" id="collageContainer">
+      <div class="img-wrapper img-1">
+        <img src="uploads/section2/aw.webp" alt="Sonitori Siem Reap view 1" loading="lazy">
+      </div>
+      <div class="img-wrapper img-2">
+        <img src="uploads/section2/bw.webp" alt="Sonitori Siem Reap view 2" loading="lazy">
+      </div>
+      <div class="img-wrapper img-3">
+        <img src="uploads/section2/cw.webp" alt="Sonitori Siem Reap view 3" loading="lazy">
+      </div>
+      <div class="img-wrapper img-4">
+        <img src="uploads/section2/dw.webp" alt="Sonitori Siem Reap view 4" loading="lazy">
+      </div>
+      <div class="img-wrapper img-5">
+        <img src="uploads/section2/ew.webp" alt="Sonitori Siem Reap view 5" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3 - 3 TABS: Dining, Rooftop, Activity ===== -->
+<section class="section-3" id="section3">
+  <div class="section-label">✦ Discover Siem Reap</div>
+  <h2>Experiences at Sonitori City View</h2>
+
+  <div class="tabs-container" id="tabButtons">
+    <button class="tab-btn active" data-tab="dining">Dining</button>
+    <button class="tab-btn" data-tab="rooftop">Rooftop</button>
+  </div>
+
+  <div class="tab-content active" id="tab-dining">
+    <div class="image-row">
+      <div class="img-card"><img src="uploads/section3/_S5A2652-HDR.webp" alt="Dining 1" loading="lazy"></div>
+      <div class="img-card"><img src="uploads/section3/_S5A2604-HDR.webp" alt="Dining 2" loading="lazy"></div>
+      <div class="img-card"><img src="uploads/section3/_S5A2564-HDR.webp" alt="Dining 3" loading="lazy"></div>
+      <div class="img-card"><img src="uploads/section3/_S5A2688-HDR.webp" alt="Dining 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-rooftop">
+    <div class="image-row">
+      <div class="img-card"><img src="uploads/section3/_S5A2820-HDR.webp" alt="Rooftop 1" loading="lazy"></div>
+      <div class="img-card"><img src="uploads/section3/_S5A2730-HDR.webp" alt="Rooftop 2" loading="lazy"></div>
+      <div class="img-card"><img src="uploads/section3/_S5A2838-HDR.webp" alt="Rooftop 3" loading="lazy"></div>
+      <div class="img-card"><img src="uploads/section3/_S5A2802-HDR.webp" alt="Rooftop 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+<!-- ===== OFFERS ===== -->
+<section class="offers-section" id="offersSection">
+  <div class="offers-header">
+    <div class="section-label">✦ What Sonitori Offers</div>
+    <h2>Exceptional Services & Amenities</h2>
+    <p>Designed to make your stay truly memorable</p>
+  </div>
+
+  <div class="offers-grid">
+    <div class="offer-item">
+      <span class="offer-icon"><i class="fas fa-concierge-bell"></i></span>
+      <div class="offer-title">Room Service</div>
+      <div class="offer-divider"></div>
+      <div class="offer-desc">In-room dining and services.</div>
+    </div>
+
+    <div class="offer-item">
+      <span class="offer-icon"><i class="fas fa-wifi"></i></span>
+      <div class="offer-title">Free Wi‑Fi</div>
+      <div class="offer-divider"></div>
+      <div class="offer-desc">Internet access for guests.</div>
+    </div>
+
+
+    <div class="offer-item">
+      <span class="offer-icon"><i class="fa-solid fa-plane-arrival"></i></span>
+      <div class="offer-title">Airport Transfer</div>
+      <div class="offer-divider"></div>
+      <div class="offer-desc">Pick up / drop off services.</div>
+    </div>
+
+    <div class="offer-item">
+      <span class="offer-icon"><i class="fa-solid fa-person-hiking"></i></span>
+      <div class="offer-title">Angkor Tours</div>
+      <div class="offer-divider"></div>
+      <div class="offer-desc">Curated temple experiences.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE ===== -->
+<section class="why-choose-section" id="whyChooseSection">
+  <div class="why-wrapper">
+    <div class="why-carousel" id="whyCarousel">
+      <div class="why-carousel-track" id="whyCarouselTrack"></div>
+    </div>
+    <div class="why-overlay"></div>
+    <div class="why-text-content">
+      <div class="section-label">✦ Why Choose Us</div>
+      <h2>Your Gateway to<br />Angkor &amp; City Views</h2>
+      <p class="why-description">
+        Discover Siem Reap's newest city-view boutique hotel, perfectly positioned for exploring the 
+        legendary Angkor Wat and the vibrant local culture. Sonitori City View offers <span class="highlight">brand new accommodations</span>, 
+        breathtaking panoramic city views, and <span class="highlight">authentic Cambodian hospitality</span>. 
+        Whether you're here for the temples, the food, or simply to enjoy the city skyline, 
+        our warm and attentive team ensures every moment is unforgettable.
+      </p>
+      <button class="discover-btn">
+        Discover more <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SMILES ===== -->
+<section class="smiles-section" id="smilesSection">
+  <div class="smiles-wrapper">
+    <div class="smiles-container">
+      <div class="smiles-text-content">
+        <div class="section-label">✦ Smiles at Sonitori</div>
+        <h2>Warmth That<br />Welcomes You Home</h2>
+        <p class="smiles-description">
+          At Sonitori City View, every smile reflects our commitment to genuine hospitality. 
+          With <span class="highlight">personalized service</span>, local charm, and 
+          attention to detail, your stay in Siem Reap will be warm and unforgettable.
+        </p>
+      </div>
+
+      <div class="smiles-images">
+        <div class="image-item pos-left-big">
+          <img src="uploads/section2/aw.webp" alt="Smile 1" loading="lazy">
+        </div>
+        <div class="image-item pos-left-small">
+          <img src="uploads/section2/bw.webp" alt="Smile 2" loading="lazy">
+        </div>
+        <div class="image-item pos-right-big">
+          <img src="uploads/section2/cw.webp" alt="Smile 3" loading="lazy">
+        </div>
+        <div class="image-item pos-right-small">
+          <img src="uploads/section2/dw.webp" alt="Smile 4" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4 - ROOMS ===== -->
+<section class="section-4" id="section4">
+  <div class="section-label">✦ Accommodation</div>
+  <h2>Luxurious Rooms & Suites</h2>
+
+  <div class="room-wrapper">
+    <div class="room-carousel" id="roomCarousel">
+      <div class="carousel-track" id="carouselTrack"></div>
+      <div class="carousel-counter" id="carouselCounter">
+        <span id="currentCarouselNum">1</span> / <span id="totalCarouselNum">4</span>
+      </div>
+      <div class="carousel-nav">
+        <button id="carouselPrev"><i class="fas fa-chevron-up"></i></button>
+        <button id="carouselNext"><i class="fas fa-chevron-down"></i></button>
+      </div>
+    </div>
+
+    <div class="room-details-section" id="roomDetailsSection">
+      <!-- room-type-tabs are hidden via CSS -->
+      <div class="room-type" id="roomType">Superior Double City View</div>
+      <p class="room-desc" id="roomDesc">
+        Experience comfort and elegance in our Superior Double With City View. Featuring modern amenities, 
+        a king-size bed, and stunning city views. Perfect for exploring Angkor Wat.
+      </p>
+      <div class="room-amenities" id="roomAmenities">
+        <div class="amenity"><i class="fas fa-bed"></i> King Size Bed</div>
+        <div class="amenity"><i class="fas fa-tv"></i> 55" Smart TV</div>
+        <div class="amenity"><i class="fas fa-shower"></i> Rain Shower</div>
+        <div class="amenity"><i class="fas fa-couch"></i> Seating Area</div>
+        <div class="amenity"><i class="fas fa-mug-saucer"></i> Coffee Machine</div>
+        <div class="amenity"><i class="fas fa-wifi"></i> Free WiFi</div>
+      </div>
+      <button class="room-btn" id="roomBookBtn">
+        Book This Room <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOCATION ===== -->
+<section class="location-section" id="locationSection">
+  <div class="location-wrapper">
+    <div class="location-map">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3881.9367394029073!2d103.85596164720187!3d13.354209673385395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31101724d5a75335%3A0x7e35dd6e9184bd83!2sSonitori%20Riverside!5e0!3m2!1sen!2skh!4v1784279016527!5m2!1sen!2skh" 
+        width="600" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+    </div>
+
+    <div>
+      <div class="location-header">
+        <div class="section-label">✦ Location</div>
+        <h2>Nearby Places</h2>
+        <p>Located along the scenic riverside in Siem Reap, our hotel is just steps away from the city's most popular attractions, cultural landmarks, and vibrant local life.</p>
+      </div>
+     
+      <div class="nearby-grid">
+        <div class="nearby-item">
+          <div class="nearby-name">Pub Street</div>
+          <div class="nearby-distance"><i class="fas fa-route"></i> 500 m</div>
+        </div>
+
+        <div class="nearby-item">
+          <div class="nearby-name">Old Market</div>
+          <div class="nearby-distance"><i class="fas fa-route"></i> 450 m</div>
+        </div>
+
+        <div class="nearby-item">
+          <div class="nearby-name">Night Market</div>
+          <div class="nearby-distance"><i class="fas fa-route"></i> 800 m</div>
+        </div>
+
+        <div class="nearby-item">
+          <div class="nearby-name">City Center</div>
+          <div class="nearby-distance"><i class="fas fa-route"></i> 400 m</div>
+        </div>
+
+        <div class="nearby-item">
+          <div class="nearby-name">Royal Gardens</div>
+          <div class="nearby-distance"><i class="fas fa-route"></i> 1.2 km</div>
+        </div>
+
+        <div class="nearby-item">
+          <div class="nearby-name">Angkor National Museum</div>
+          <div class="nearby-distance"><i class="fas fa-route"></i> 1.6 km</div>
+        </div>
+
+        <div class="nearby-item">
+          <div class="nearby-name">Angkor Wat</div>
+          <div class="nearby-distance"><i class="fas fa-route"></i> 6 km</div>
+        </div>
+
+        <div class="nearby-item">
+          <div class="nearby-name">Angkor Ticket Center</div>
+          <div class="nearby-distance"><i class="fas fa-route"></i> 5 km</div>
+        </div>
+
+        <div class="nearby-item">
+          <div class="nearby-name">Siem Reap Airport (New)</div>
+          <div class="nearby-distance"><i class="fas fa-route"></i> 45 km</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="location-address">
+    <div class="address-icon"><i class="fas fa-location-dot"></i></div>
+    <div class="address-text">
+      <span>Address:</span> Sonitori Riverside, Siem Reap, Cambodia
+    </div>
+  </div>
+</section>
+<script src="footer.js"></script>
+
+<style>
+  /* ===== HIDDEN ELEMENTS ===== */
+  .room-type-tabs {
+    display: none !important;
+  }
+
+  /* ===== FIX IMG-WRAPPER HOVER DELAY ===== */
+  .img-wrapper {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease !important;
+    will-change: transform;
+  }
+  
+  .img-wrapper:hover {
+    transform: scale(1.05) !important;
+    z-index: 10 !important;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease !important;
+  }
+  
+  .img-wrapper img {
+    transition: filter 0.3s ease !important;
+    will-change: filter;
+  }
+  
+  .img-wrapper:hover img {
+    filter: brightness(1.05) !important;
+  }
+</style>
+
+<script>
+  // =============================================
+  // HERO FADE SLIDESHOW
+  // =============================================
+  (function() {
+    const slides = document.querySelectorAll('.hero-slide');
+    let current = 0;
+    let interval = 4000;
+
+    function nextSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    setInterval(nextSlide, interval);
+  })();
+
+  // =============================================
+  // SCROLL HANDLER - HEADER BG + HIDE ARROW
+  // =============================================
+  (function() {
+    var header = document.getElementById('mainHeader');
+    var scrollDown = document.getElementById('scrollDown');
+    function handleScroll() {
+      var scrollY = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+      if (scrollY > 50) header.classList.add('with-bg');
+      else header.classList.remove('with-bg');
+      if (scrollY > 100) scrollDown.classList.add('hidden');
+      else scrollDown.classList.remove('hidden');
+    }
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('load', handleScroll);
+    handleScroll();
+  })();
+
+  // =============================================
+  // MENU DROPDOWN
+  // =============================================
+  (function() {
+    var menuBtn = document.getElementById('menuBtn');
+    var menuDropdown = document.getElementById('menuDropdown');
+    var aboutUsTrigger = document.getElementById('aboutUsTrigger');
+    var aboutUsSubDropdown = document.getElementById('aboutUsSubDropdown');
+    var destinationSelector = document.getElementById('destinationSelector');
+    var destinationDropdown = document.getElementById('destinationDropdown');
+
+    function closeAllDropdowns() {
+      menuDropdown.classList.remove('active');
+      aboutUsSubDropdown.classList.remove('active');
+      destinationDropdown.classList.remove('active');
+      destinationSelector.classList.remove('active');
+    }
+    menuBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      destinationDropdown.classList.remove('active');
+      destinationSelector.classList.remove('active');
+      menuDropdown.classList.toggle('active');
+      if (!menuDropdown.classList.contains('active')) aboutUsSubDropdown.classList.remove('active');
+    });
+    aboutUsTrigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      aboutUsSubDropdown.classList.toggle('active');
+    });
+    document.addEventListener('click', function(e) {
+      if (!menuBtn.contains(e.target) && !destinationSelector.contains(e.target)) closeAllDropdowns();
+    });
+    document.querySelectorAll('.sub-dropdown-item').forEach(function(item) {
+      item.addEventListener('click', closeAllDropdowns);
+    });
+    document.querySelectorAll('.menu-dropdown-item:not(#aboutUsTrigger)').forEach(function(item) {
+      item.addEventListener('click', closeAllDropdowns);
+    });
+  })();
+
+  // =============================================
+  // DESTINATION SELECTOR - NAVIGATE TO PAGES
+  // =============================================
+  (function() {
+    var currentDestination = document.getElementById('currentDestination');
+    var destinationDropdown = document.getElementById('destinationDropdown');
+    var destinationSelector = document.getElementById('destinationSelector');
+    var heroTitle = document.getElementById('heroTitle');
+    var menuDropdown = document.getElementById('menuDropdown');
+
+    var currentPath = window.location.pathname;
+    var isPhnomPenh = currentPath.includes('phnompenh');
+    var isSiemReap = currentPath.includes('siemreap') || currentPath.endsWith('/') || currentPath.endsWith('index.html');
+
+    document.querySelectorAll('.destination-dropdown-item').forEach(function(item) {
+      var href = item.getAttribute('href');
+      if ((isPhnomPenh && href.includes('phnompenh')) || (isSiemReap && href.includes('siemreap'))) {
+        item.classList.add('active');
+        currentDestination.textContent = item.dataset.destination;
+        heroTitle.textContent = 'Welcome to Sonitori ' + item.dataset.destination;
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    document.querySelectorAll('.destination-dropdown-item').forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        var href = this.getAttribute('href');
+        if (href) {
+          window.location.href = href;
+        }
+      });
+    });
+
+    destinationSelector.addEventListener('click', function(e) {
+      e.stopPropagation();
+      menuDropdown.classList.remove('active');
+      destinationDropdown.classList.toggle('active');
+      destinationSelector.classList.toggle('active');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!destinationSelector.contains(e.target)) {
+        destinationDropdown.classList.remove('active');
+        destinationSelector.classList.remove('active');
+      }
+    });
+  })();
+
+  // =============================================
+  // CALENDAR + BOOKING
+  // =============================================
+  (function() {
+    var state = { checkIn: null, checkOut: null };
+    var datePanel = document.getElementById('datePanel');
+    var backdrop = document.getElementById('panelBackdrop');
+    var bookingHeaderBtn = document.getElementById('bookingHeaderBtn');
+    var calendarGrid1 = document.getElementById('calendarGrid1');
+    var calendarGrid2 = document.getElementById('calendarGrid2');
+    var month1Label = document.getElementById('month1Label');
+    var month2Label = document.getElementById('month2Label');
+    var prevBtn = document.getElementById('prevMonth');
+    var nextBtn = document.getElementById('nextMonth');
+    var calCancel = document.getElementById('calCancel');
+    var calConfirm = document.getElementById('calConfirm');
+
+    function isPastDate(date) {
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return date < today;
+    }
+
+    window.tempCheckIn = null;
+    window.tempCheckOut = null;
+    var currentMonth = new Date().getMonth();
+    var currentYear = new Date().getFullYear();
+
+    function renderCalendar() {
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var todayDate = today.getDate();
+      var todayMonth = today.getMonth();
+      var todayYear = today.getFullYear();
+
+      var currentDate = new Date(currentYear, currentMonth, 1);
+      var todayDateObj = new Date(todayYear, todayMonth, 1);
+      if (currentDate <= todayDateObj) prevBtn.classList.add('disabled');
+      else prevBtn.classList.remove('disabled');
+
+      renderSingleMonth(calendarGrid1, month1Label, currentMonth, currentYear);
+      var nextMonth = currentMonth + 1;
+      var nextYear = currentYear;
+      if (nextMonth > 11) { nextMonth = 0; nextYear++; }
+      renderSingleMonth(calendarGrid2, month2Label, nextMonth, nextYear);
+    }
+
+    function renderSingleMonth(grid, label, month, year) {
+      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var todayDate = today.getDate();
+      var todayMonth = today.getMonth();
+      var todayYear = today.getFullYear();
+
+      label.textContent = months[month] + ' ' + year;
+      var firstDay = new Date(year, month, 1).getDay();
+      var daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      var html = '';
+      var weekdays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+      for (var w = 0; w < weekdays.length; w++) {
+        html += '<div class="cal-day weekday">' + weekdays[w] + '</div>';
+      }
+      var startOffset = firstDay === 0 ? 6 : firstDay - 1;
+      for (var i = 0; i < startOffset; i++) html += '<div class="cal-day empty"></div>';
+
+      for (var d = 1; d <= daysInMonth; d++) {
+        var dateObj = new Date(year, month, d);
+        var isPast = isPastDate(dateObj);
+        var cls = 'cal-day';
+        if (isPast) cls += ' disabled';
+        if (d === todayDate && month === todayMonth && year === todayYear) cls += ' today';
+        if (window.tempCheckIn && window.tempCheckOut && dateObj >= window.tempCheckIn && dateObj <= window.tempCheckOut) cls += ' in-range';
+        if (window.tempCheckIn && dateObj.getTime() === window.tempCheckIn.getTime()) cls += ' selected';
+        if (window.tempCheckOut && dateObj.getTime() === window.tempCheckOut.getTime()) cls += ' selected';
+
+        if (!isPast) {
+          html += '<div class="' + cls + '" data-date="' + d + '" data-month="' + month + '" data-year="' + year + '">' + d + '</div>';
+        } else {
+          html += '<div class="' + cls + '">' + d + '</div>';
+        }
+      }
+      grid.innerHTML = html;
+
+      grid.querySelectorAll('.cal-day:not(.weekday):not(.empty):not(.disabled)').forEach(function(el) {
+        el.addEventListener('click', function() {
+          var day = parseInt(this.dataset.date);
+          var month = parseInt(this.dataset.month);
+          var year = parseInt(this.dataset.year);
+          var clicked = new Date(year, month, day);
+          if (isPastDate(clicked)) return;
+          if (!window.tempCheckIn || (window.tempCheckIn && window.tempCheckOut)) {
+            window.tempCheckIn = clicked;
+            window.tempCheckOut = null;
+          } else if (window.tempCheckIn && !window.tempCheckOut) {
+            if (clicked < window.tempCheckIn) {
+              window.tempCheckOut = window.tempCheckIn;
+              window.tempCheckIn = clicked;
+            } else {
+              window.tempCheckOut = clicked;
+            }
+          }
+          renderCalendar();
+        });
+      });
+    }
+
+    prevBtn.addEventListener('click', function() {
+      if (this.classList.contains('disabled')) return;
+      var currentDate = new Date(currentYear, currentMonth, 1);
+      var today = new Date();
+      var todayStart = new Date(today.getFullYear(), today.getMonth(), 1);
+      if (currentDate > todayStart) {
+        currentMonth--;
+        if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+        renderCalendar();
+      }
+    });
+    nextBtn.addEventListener('click', function() {
+      currentMonth++;
+      if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+      renderCalendar();
+    });
+
+    function positionPanel(panel, trigger) {
+      var rect = trigger.getBoundingClientRect();
+      var panelWidth = Math.min(620, window.innerWidth - 32);
+      var left = rect.left + rect.width / 2 - panelWidth / 2;
+      left = Math.max(16, Math.min(left, window.innerWidth - panelWidth - 16));
+      var spaceBelow = window.innerHeight - rect.bottom - 20;
+      var panelHeight = 500;
+      var top;
+      if (spaceBelow < panelHeight && rect.top > panelHeight + 40) {
+        top = rect.top - panelHeight - 16;
+        panel.style.transformOrigin = 'bottom center';
+      } else {
+        top = rect.bottom + 12;
+        panel.style.transformOrigin = 'top center';
+      }
+      panel.style.left = left + 'px';
+      panel.style.top = top + 'px';
+      panel.style.width = panelWidth + 'px';
+      panel.style.maxHeight = Math.min(window.innerHeight - 40, 560) + 'px';
+      panel.style.overflowY = 'auto';
+    }
+
+    function openPanel(trigger) {
+      window.tempCheckIn = state.checkIn ? new Date(state.checkIn) : null;
+      window.tempCheckOut = state.checkOut ? new Date(state.checkOut) : null;
+      if (window.tempCheckIn) {
+        currentMonth = window.tempCheckIn.getMonth();
+        currentYear = window.tempCheckIn.getFullYear();
+      } else {
+        var today = new Date();
+        currentMonth = today.getMonth();
+        currentYear = today.getFullYear();
+      }
+      renderCalendar();
+      positionPanel(datePanel, trigger);
+      datePanel.classList.add('active');
+      backdrop.classList.add('active');
+    }
+
+    function closePanel() {
+      datePanel.classList.remove('active');
+      backdrop.classList.remove('active');
+    }
+
+    // Booking header button click handler
+    bookingHeaderBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openPanel(this);
+    });
+
+    // Room book button click handler - opens calendar from header position
+    const roomBookBtn = document.getElementById('roomBookBtn');
+    if (roomBookBtn) {
+      roomBookBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        // Pass the bookingHeaderBtn as the trigger so it drops down from the header
+        openPanel(bookingHeaderBtn);
+      });
+    }
+
+    calCancel.addEventListener('click', closePanel);
+    calConfirm.addEventListener('click', function() {
+      if (window.tempCheckIn && window.tempCheckOut) {
+        function formatDateForUrl(date) {
+          var year = date.getFullYear();
+          var month = String(date.getMonth() + 1).padStart(2, '0');
+          var day = String(date.getDate()).padStart(2, '0');
+          return year + '-' + month + '-' + day;
+        }
+        var checkin = formatDateForUrl(window.tempCheckIn);
+        var checkout = formatDateForUrl(window.tempCheckOut);
+        var bookingUrl = 'https://hotels.cloudbeds.com/en/reservation/To64hk?checkin=' + checkin + '&checkout=' + checkout;
+        window.location.href = bookingUrl;
+      } else {
+        alert('Please select both check-in and check-out dates.');
+      }
+    });
+    backdrop.addEventListener('click', closePanel);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePanel(); });
+    window.addEventListener('resize', function() {
+      if (datePanel.classList.contains('active')) positionPanel(datePanel, bookingHeaderBtn);
+    });
+
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var dIn = new Date(today); dIn.setDate(today.getDate() + 1);
+    var dOut = new Date(today); dOut.setDate(today.getDate() + 4);
+    state.checkIn = dIn;
+    state.checkOut = dOut;
+    window.tempCheckIn = new Date(dIn);
+    window.tempCheckOut = new Date(dOut);
+    var now = new Date();
+    currentMonth = now.getMonth();
+    currentYear = now.getFullYear();
+    renderCalendar();
+  })();
+
+  // =============================================
+  // SCROLL ANIMATIONS - REVEAL SECTIONS
+  // =============================================
+  (function() {
+    var sections = document.querySelectorAll('.section-2, .section-3, .offers-section, .why-choose-section, .smiles-section, .section-4, .location-section');
+
+    var sectionObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { 
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    sections.forEach(function(section) {
+      sectionObserver.observe(section);
+    });
+
+    function observeTabImages() {
+      var imgCards = document.querySelectorAll('.image-row .img-card');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.2 });
+
+      imgCards.forEach(function(card) {
+        observer.observe(card);
+      });
+    }
+
+    observeTabImages();
+
+    // Tab switching with slide-up animation
+    (function() {
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabContents = {
+        dining: document.getElementById('tab-dining'),
+        rooftop: document.getElementById('tab-rooftop')
+      };
+
+      function animateImages(container) {
+        const cards = container.querySelectorAll('.img-card');
+        cards.forEach(card => {
+          card.classList.remove('visible');
+        });
+        void container.offsetHeight;
+        cards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('visible');
+          }, index * 100);
+        });
+      }
+
+      function switchTab(tabName) {
+        Object.values(tabContents).forEach(content => {
+          content.classList.remove('active');
+        });
+        const activeContent = tabContents[tabName];
+        if (activeContent) {
+          activeContent.classList.add('active');
+          animateImages(activeContent);
+        }
+      }
+
+      const initialActiveTab = document.querySelector('.tab-btn.active');
+      if (initialActiveTab) {
+        const initialTabName = initialActiveTab.dataset.tab;
+        const initialContent = tabContents[initialTabName];
+        if (initialContent) {
+          const cards = initialContent.querySelectorAll('.img-card');
+          cards.forEach(card => card.classList.remove('visible'));
+          void initialContent.offsetHeight;
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('visible');
+            }, index * 100);
+          });
+        }
+      }
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          tabButtons.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          const tabName = this.dataset.tab;
+          switchTab(tabName);
+        });
+      });
+    })();
+
+    setTimeout(function() {
+      sections.forEach(function(section) {
+        var rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          section.classList.add('visible');
+        }
+      });
+    }, 200);
+  })();
+
+  // =============================================
+  // ROOM CAROUSEL - VERTICAL ANIMATION WITH DIFFERENT IMAGES
+  // =============================================
+  (function() {
+    // Single room data - this will be used for all slides
+    const roomData = {
+      id: 0,
+      name: 'Superior Double City View',
+      price: '$180',
+      desc: 'Experience comfort and elegance in our Superior Double With City View Room. Featuring modern amenities, a queen-size bed, and stunning city views. Perfect for stay.',
+      amenities: [
+        { icon: 'fa-bed', text: 'Double Bed' },
+        { icon: 'fa-tv', text: 'Smart TV' },
+        { icon: 'fa-shower', text: 'Private Bathroom' },
+        { icon: 'fa-couch', text: 'Seating Area' },
+        { icon: 'fa-eye', text: 'City View' },
+        { icon: 'fa-wifi', text: 'Free WiFi' }
+      ]
+    };
+
+    // Different images for the carousel - all showing the same room type
+    const carouselImages = [
+      'uploads/room-section/_S5A2187-HDR.webp',
+      'uploads/room-section/_S5A2297-HDR.webp',
+      'uploads/room-section/_S5A2137-HDR.webp',
+      'uploads/room-section/_S5A2169-HDR.webp'
+    ];
+
+    let currentIndex = 0;
+    let isTransitioning = false;
+    let autoSlideInterval = null;
+    let isAutoPlayEnabled = true;
+
+    const carouselTrack = document.getElementById('carouselTrack');
+    const roomType = document.getElementById('roomType');
+    const roomDesc = document.getElementById('roomDesc');
+    const roomAmenities = document.getElementById('roomAmenities');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const currentCarouselNum = document.getElementById('currentCarouselNum');
+    const totalCarouselNum = document.getElementById('totalCarouselNum');
+
+    totalCarouselNum.textContent = carouselImages.length;
+
+    function getPositionClass(index, activeIndex, total) {
+      const diff = (index - activeIndex + total) % total;
+      if (diff === 0) return 'active';
+      if (diff === 1) return 'top';
+      if (diff === 2) return 'top-2';
+      if (diff === total - 1) return 'bottom';
+      if (diff === total - 2) return 'bottom-2';
+      return '';
+    }
+
+    function buildCarousel() {
+      carouselTrack.innerHTML = '';
+      carouselImages.forEach((image, index) => {
+        const item = document.createElement('div');
+        const posClass = getPositionClass(index, currentIndex, carouselImages.length);
+        item.className = `carousel-item ${posClass}`;
+        item.dataset.index = index;
+        item.innerHTML = `
+          <img src="${image}" alt="${roomData.name}" loading="lazy">
+        `;
+        // Allow clicking to navigate
+        item.addEventListener('click', function() {
+          const idx = parseInt(this.dataset.index);
+          if (idx !== currentIndex && !isTransitioning) {
+            goToRoom(idx);
+          }
+        });
+        carouselTrack.appendChild(item);
+      });
+      updateCounter();
+    }
+
+    function updateCarousel() {
+      const items = carouselTrack.querySelectorAll('.carousel-item');
+      items.forEach((item, index) => {
+        const posClass = getPositionClass(index, currentIndex, carouselImages.length);
+        item.className = `carousel-item ${posClass}`;
+      });
+      updateCounter();
+    }
+
+    function updateCounter() {
+      currentCarouselNum.textContent = currentIndex + 1;
+    }
+
+    function updateRoomDetails() {
+      // Always show the same room details
+      roomType.textContent = roomData.name;
+      roomDesc.textContent = roomData.desc;
+      roomAmenities.innerHTML = roomData.amenities.map(a => 
+        `<div class="amenity"><i class="fas ${a.icon}"></i> ${a.text}</div>`
+      ).join('');
+    }
+
+    function stopAutoPlay() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+        isAutoPlayEnabled = false;
+      }
+    }
+
+    function startAutoPlay() {
+      if (!isAutoPlayEnabled) return;
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(nextRoom, 4000);
+    }
+
+    function goToRoom(index) {
+      if (isTransitioning || index === currentIndex) return;
+      isTransitioning = true;
+      stopAutoPlay();
+      currentIndex = index;
+      updateCarousel();
+      // Details remain the same - no need to update them
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 700);
+    }
+
+    function nextRoom() {
+      if (isTransitioning) return;
+      const nextIndex = (currentIndex + 1) % carouselImages.length;
+      currentIndex = nextIndex;
+      updateCarousel();
+    }
+
+    function manualNext() {
+      if (isTransitioning) return;
+      stopAutoPlay();
+      const nextIndex = (currentIndex + 1) % carouselImages.length;
+      isTransitioning = true;
+      currentIndex = nextIndex;
+      updateCarousel();
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 700);
+    }
+
+    function manualPrev() {
+      if (isTransitioning) return;
+      stopAutoPlay();
+      const prevIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+      isTransitioning = true;
+      currentIndex = prevIndex;
+      updateCarousel();
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 700);
+    }
+
+    function autoSlideNext() {
+      if (isTransitioning || !isAutoPlayEnabled) return;
+      const nextIndex = (currentIndex + 1) % carouselImages.length;
+      currentIndex = nextIndex;
+      updateCarousel();
+    }
+
+    function startAutoSlide() {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      if (isAutoPlayEnabled) {
+        autoSlideInterval = setInterval(autoSlideNext, 4000);
+      }
+    }
+
+    nextBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      manualNext();
+    });
+
+    prevBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      manualPrev();
+    });
+
+    // Room book button click is handled in the calendar section above
+    // No need for alert here anymore
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        manualNext();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        manualPrev();
+      }
+    });
+
+    buildCarousel();
+    updateRoomDetails(); // Set details once
+    startAutoSlide();
+
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+      } else {
+        if (isAutoPlayEnabled) {
+          startAutoSlide();
+        }
+      }
+    });
+  })();
+
+  // =============================================
+  // WHY CHOOSE CAROUSEL
+  // =============================================
+  (function() {
+    const imageData = [
+      { image: 'uploads/section2/aw.webp', label: 'Luxury Rooms' },
+      { image: 'uploads/section2/bw.webp', label: 'City Views' },
+      { image: 'uploads/section2/cw.webp', label: 'Rooftop Bar' },
+      { image: 'uploads/section2/dw.webp', label: 'Khmer Hospitality' }
+    ];
+
+    let currentIndex = 0;
+    let autoSlideInterval = null;
+    const track = document.getElementById('whyCarouselTrack');
+
+    function getPositionClass(index, activeIndex, total) {
+      const diff = (index - activeIndex + total) % total;
+      if (diff === 0) return 'active';
+      if (diff === 1) return 'right';
+      if (diff === 2) return 'right-2';
+      if (diff === total - 1) return 'left';
+      if (diff === total - 2) return 'left-2';
+      return '';
+    }
+
+    function buildCarousel() {
+      track.innerHTML = '';
+      imageData.forEach((item, index) => {
+        const el = document.createElement('div');
+        const posClass = getPositionClass(index, currentIndex, imageData.length);
+        el.className = `why-carousel-item ${posClass}`;
+        el.dataset.index = index;
+        el.innerHTML = `
+          <img src="${item.image}" alt="${item.label}" loading="lazy">
+        `;
+        track.appendChild(el);
+      });
+    }
+
+    function updateCarousel() {
+      const items = track.querySelectorAll('.why-carousel-item');
+      items.forEach((item, index) => {
+        const posClass = getPositionClass(index, currentIndex, imageData.length);
+        item.className = `why-carousel-item ${posClass}`;
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % imageData.length;
+      updateCarousel();
+    }
+
+    function startAutoSlide() {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(nextSlide, 3000);
+    }
+
+    buildCarousel();
+    startAutoSlide();
+
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+      } else {
+        startAutoSlide();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
