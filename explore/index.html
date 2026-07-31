@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonitori · Menu · Tour · Spa</title>
+    <link rel="icon" type="image/png" href="../../uploads/top-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Flaticon Icons -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #FAF8F4;
+            min-height: 100vh;
+            padding: 40px 20px 100px;
+            /* bottom padding for fixed tabs */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #C9A66B;
+            margin-bottom: 6px;
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
+            color: #12343B;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+        .header h1 span {
+            color: #038494;
+            font-style: italic;
+        }
+        .header .sub {
+            color: #5a5a5a;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        /* ===== CONTENT PANELS ===== */
+        .panel {
+            display: none;
+            animation: fadePanel 0.5s ease forwards;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        @keyframes fadePanel {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== GRID (Menu & Tour) ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            justify-items: center;
+        }
+
+        .grid .item {
+            width: 100%;
+            max-width: 400px;
+            background: #FFFFFF;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(18, 52, 59, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+
+        .grid .item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            background: #f8f6f2;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .grid .item img.loaded {
+            opacity: 1;
+        }
+
+        /* ===== SINGLE IMAGE (Spa) ===== */
+        .spa-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 48px rgba(18, 52, 59, 0.08);
+            position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+
+
+        .spa-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            background: #f8f6f2;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .spa-card img.loaded {
+            opacity: 1;
+        }
+
+        /* ===== LOADING SKELETON ===== */
+        .skeleton {
+            position: absolute;
+            inset: 0;
+            background: #f0ede8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease;
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        .spa-card .skeleton {
+            border-radius: 20px;
+        }
+
+        .skeleton.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .skeleton .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(201, 166, 107, 0.15);
+            border-top-color: #C9A66B;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+
+        .spa-card .skeleton .spinner {
+            width: 44px;
+            height: 44px;
+            border-width: 3.5px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .skeleton .pulse {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+            animation: shimmer 1.8s ease-in-out infinite;
+            border-radius: 16px;
+        }
+
+        .spa-card .skeleton .pulse {
+            border-radius: 20px;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* ===== FIXED BOTTOM TABS ===== */
+        .bottom-tabs {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 8px 16px 12px;
+            box-shadow: 0 -4px 30px rgba(18, 52, 59, 0.06);
+        }
+
+        .bottom-tabs .tabs-inner {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            max-width: 480px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.02);
+            padding: 4px;
+            border-radius: 60px;
+        }
+
+        .bottom-tabs .tab-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-align: center;
+            letter-spacing: 0.3px;
+            min-height: 44px;
+        }
+
+        .bottom-tabs .tab-btn .fi {
+            font-size: 18px;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+
+
+
+
+        .bottom-tabs .tab-btn.active {
+            background: #12343B;
+            color: #FFFFFF;
+            box-shadow: 0 4px 16px rgba(18, 52, 59, 0.20);
+        }
+
+        .bottom-tabs .tab-btn.active .fi {
+            color: #FFFFFF;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px 90px;
+            }
+
+            .bottom-tabs {
+                padding: 6px 12px 10px;
+            }
+
+            .bottom-tabs .tabs-inner {
+                gap: 4px;
+                padding: 3px;
+                border-radius: 40px;
+                max-width: 100%;
+            }
+
+            .bottom-tabs .tab-btn {
+                font-size: 11px;
+                padding: 8px 10px;
+                min-height: 38px;
+                gap: 5px;
+                border-radius: 40px;
+            }
+
+            .bottom-tabs .tab-btn .fi {
+                font-size: 15px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .grid .item {
+                max-width: 100%;
+            }
+            .grid .item .skeleton .spinner {
+                width: 32px;
+                height: 32px;
+                border-width: 2.5px;
+            }
+            .spa-card .skeleton .spinner {
+                width: 36px;
+                height: 36px;
+                border-width: 3px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .bottom-tabs .tab-btn {
+                font-size: 10px;
+                padding: 6px 8px;
+                gap: 4px;
+                min-height: 34px;
+            }
+            .bottom-tabs .tab-btn .fi {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <div class="badge">✦ Explore</div>
+            <h1>Discover <span>More</span></h1>
+            <div class="sub">Menu · Tour · Spa</div>
+        </div>
+
+        <!-- ===== CONTENT PANELS ===== -->
+
+        <!-- MENU PANEL -->
+        <div class="panel active" id="panel-menu">
+            <div class="grid" id="menuGrid"></div>
+        </div>
+
+        <!-- TOUR PANEL -->
+        <div class="panel" id="panel-tour">
+            <div class="grid" id="tourGrid"></div>
+        </div>
+
+        <!-- SPA PANEL -->
+        <div class="panel" id="panel-spa">
+            <div class="spa-card" id="spaCard">
+                <div class="skeleton" id="spaSkeleton">
+                    <div class="spinner"></div>
+                    <div class="pulse"></div>
+                </div>
+                <img src="massage/Massage-09.png" alt="Sonitori Massage" loading="lazy" id="spaImage" />
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== FIXED BOTTOM TABS ===== -->
+    <div class="bottom-tabs">
+        <div class="tabs-inner">
+            <button class="tab-btn active" data-tab="menu">
+                <i class="fi fi-rr-utensils"></i>
+                <span>Menu</span>
+            </button>
+            <button class="tab-btn" data-tab="tour">
+                <i class="fi fi-rr-book"></i>
+                <span>Tour</span>
+            </button>
+            <button class="tab-btn" data-tab="spa">
+                <i class="fi fi-rr-spa"></i>
+                <span>Spa</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== DATA WITH FOLDER PATHS =====
+            const data = {
+                menu: {
+                    count: 11,
+                    baseName: 'Menu-',
+                    ext: '.png',
+                    folder: 'menu/',
+                    gridId: 'menuGrid',
+                    label: 'Menu'
+                },
+                tour: {
+                    count: 14,
+                    baseName: 'Tour book-',
+                    ext: '.png',
+                    folder: 'tour/',
+                    gridId: 'tourGrid',
+                    label: 'Tour'
+                }
+            };
+
+            // ===== RENDER GRID =====
+            function renderGrid(config) {
+                const grid = document.getElementById(config.gridId);
+                if (!grid) return;
+                let html = '';
+                for (let i = 1; i <= config.count; i++) {
+                    const num = String(i).padStart(2, '0');
+                    const src = config.folder + config.baseName + num + config.ext;
+                    html += `
+                        <div class="item">
+                            <div class="skeleton" id="${config.gridId}-skeleton-${i}">
+                                <div class="spinner"></div>
+                                <div class="pulse"></div>
+                            </div>
+                            <img src="${src}" alt="${config.label} page ${i}" loading="lazy" data-index="${i}" data-grid="${config.gridId}" />
+                        </div>
+                    `;
+                }
+                grid.innerHTML = html;
+
+                // Attach load events
+                const images = grid.querySelectorAll('img');
+                images.forEach(img => {
+                    if (img.complete && img.naturalWidth > 0) {
+                        onGridImageLoaded(img);
+                    } else {
+                        img.addEventListener('load', function() { onGridImageLoaded(this); });
+                        img.addEventListener('error', function() { onGridImageLoaded(this); });
+                    }
+                });
+
+                // Fallback
+                setTimeout(() => {
+                    grid.querySelectorAll('.skeleton:not(.hidden)').forEach(el => {
+                        el.classList.add('hidden');
+                        setTimeout(() => el.remove(), 700);
+                    });
+                }, 8000);
+            }
+
+            function onGridImageLoaded(img) {
+                const gridId = img.dataset.grid;
+                const index = img.dataset.index;
+                const skeleton = document.getElementById(gridId + '-skeleton-' + index);
+                if (skeleton) {
+                    skeleton.classList.add('hidden');
+                    setTimeout(() => skeleton.remove(), 700);
+                }
+                img.classList.add('loaded');
+            }
+
+            // ===== RENDER SPA =====
+            function renderSpa() {
+                const img = document.getElementById('spaImage');
+                const skeleton = document.getElementById('spaSkeleton');
+
+                function onSpaLoaded() {
+                    if (skeleton) {
+                        skeleton.classList.add('hidden');
+                        setTimeout(() => skeleton.remove(), 700);
+                    }
+                    img.classList.add('loaded');
+                }
+
+                if (img.complete && img.naturalWidth > 0) {
+                    onSpaLoaded();
+                } else {
+                    img.addEventListener('load', onSpaLoaded);
+                    img.addEventListener('error', function() {
+                        if (skeleton) {
+                            skeleton.classList.add('hidden');
+                            setTimeout(() => skeleton.remove(), 700);
+                        }
+                    });
+                }
+
+                setTimeout(() => {
+                    if (skeleton && !skeleton.classList.contains('hidden')) {
+                        skeleton.classList.add('hidden');
+                        setTimeout(() => skeleton.remove(), 700);
+                    }
+                }, 8000);
+            }
+
+            // ===== TAB SWITCHING =====
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panels = {
+                menu: document.getElementById('panel-menu'),
+                tour: document.getElementById('panel-tour'),
+                spa: document.getElementById('panel-spa')
+            };
+
+            tabs.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update buttons
+                    tabs.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Update panels
+                    const tab = this.dataset.tab;
+                    Object.keys(panels).forEach(key => {
+                        panels[key].classList.toggle('active', key === tab);
+                    });
+                });
+            });
+
+            // ===== INIT =====
+            renderGrid(data.menu);
+            renderGrid(data.tour);
+            renderSpa();
+
+            console.log('✨ Sonitori · Menu · Tour · Spa ready');
+            console.log('📁 Images: menu/, tour/, massage/ folders');
+        })();
+    </script>
+
+</body>
+</html>
