@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonitori · Menu</title>
+    <link rel="icon" type="image/png" href="../../uploads/top-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #FAF8F4;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .header .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #C9A66B;
+            margin-bottom: 6px;
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
+            color: #12343B;
+            letter-spacing: -0.01em;
+        }
+        .header h1 span {
+            color: #038494;
+            font-style: italic;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            justify-items: center;
+        }
+
+        .grid .item {
+            width: 100%;
+            max-width: 400px;
+            background: #FFFFFF;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(18, 52, 59, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .grid .item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            background: #f8f6f2;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .grid .item img.loaded {
+            opacity: 1;
+        }
+
+        /* ===== LOADING SKELETON ===== */
+        .grid .item .skeleton {
+            position: absolute;
+            inset: 0;
+            background: #f0ede8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease;
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        .grid .item .skeleton.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .grid .item .skeleton .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(201, 166, 107, 0.15);
+            border-top-color: #C9A66B;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Skeleton shimmer (optional subtle pulse) */
+        .grid .item .skeleton .pulse {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+            animation: shimmer 1.8s ease-in-out infinite;
+            border-radius: 16px;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .grid .item {
+                max-width: 100%;
+            }
+            .grid .item .skeleton .spinner {
+                width: 32px;
+                height: 32px;
+                border-width: 2.5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="badge">✦ Savor</div>
+            <h1>Our <span>Menu</span></h1>
+        </div>
+
+        <!-- Image Grid -->
+        <div class="grid" id="menuGrid">
+            <!-- Images will be injected by JavaScript -->
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            const grid = document.getElementById('menuGrid');
+            const total = 11;
+            const baseName = 'Menu-';
+            const ext = '.png';
+            // Adjust folder path if needed (empty = same folder as HTML)
+            const folder = '';
+
+            let html = '';
+            for (let i = 1; i <= total; i++) {
+                const num = String(i).padStart(2, '0');
+                const src = folder + baseName + num + ext;
+                html += `
+                    <div class="item">
+                        <div class="skeleton" id="skeleton-${i}">
+                            <div class="spinner"></div>
+                            <div class="pulse"></div>
+                        </div>
+                        <img src="${src}" alt="Menu page ${i}" loading="lazy" data-index="${i}" />
+                    </div>
+                `;
+            }
+            grid.innerHTML = html;
+
+            // ===== LOADING EFFECT =====
+            const images = grid.querySelectorAll('img');
+            let loadedCount = 0;
+
+            images.forEach(img => {
+                // If image is already cached, it may load instantly
+                if (img.complete && img.naturalWidth > 0) {
+                    onImageLoaded(img);
+                } else {
+                    img.addEventListener('load', function() {
+                        onImageLoaded(this);
+                    });
+                    img.addEventListener('error', function() {
+                        // On error, still hide skeleton so user sees broken placeholder
+                        onImageLoaded(this);
+                    });
+                }
+            });
+
+            function onImageLoaded(img) {
+                const index = img.dataset.index;
+                const skeleton = document.getElementById('skeleton-' + index);
+                if (skeleton) {
+                    skeleton.classList.add('hidden');
+                    // Remove skeleton after transition to clean up DOM
+                    setTimeout(() => {
+                        skeleton.remove();
+                    }, 700);
+                }
+                img.classList.add('loaded');
+                loadedCount++;
+                if (loadedCount === images.length) {
+                    console.log('🍽️ All menu images loaded');
+                }
+            }
+
+            // Fallback: if some images never fire load/error, hide skeletons after 8s
+            setTimeout(() => {
+                document.querySelectorAll('.skeleton:not(.hidden)').forEach(el => {
+                    el.classList.add('hidden');
+                    setTimeout(() => el.remove(), 700);
+                });
+            }, 8000);
+
+            console.log('🍽️ Menu loading...');
+        })();
+    </script>
+
+</body>
+</html>
